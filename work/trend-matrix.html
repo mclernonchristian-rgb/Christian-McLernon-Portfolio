@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social Media Trend Matrix — Christian McLernon</title>
+  <meta name="description" content="A self-built real-time trend intelligence dashboard for the 18–27 UK demographic — ingesting Google Trends, Reddit, and news data into a composite scoring model." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/project.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --accent:        #6D28D9;
+      --accent-light:  #A78BFA;
+      --accent-warm:   #0EA5E9;
+      --accent-warm-l: #67D2F5;
+      --bg:            #FAF8FF;
+      --bg-raised:     #F0EBF9;
+      --bg-overlay:    #E5DAEF;
+      --page-insight-bg: #F3EEFF;
+    }
+    .proj-hero {
+      background:
+        radial-gradient(ellipse at 75% 0%, rgba(109, 40, 217, 0.09) 0%, transparent 55%),
+        radial-gradient(ellipse at 5% 100%, rgba(14, 165, 233, 0.07) 0%, transparent 50%),
+        var(--bg);
+    }
+
+    /* ── Pipeline diagram ────────────────────────────────────────────────── */
+    .pipeline {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .pipeline-step {
+      flex: 1;
+      padding: 20px 18px;
+      background: var(--bg);
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .pipeline-step:last-child { border-right: none; }
+    .pipeline-step::after {
+      content: '→';
+      position: absolute;
+      right: -11px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      color: var(--accent);
+      z-index: 1;
+      background: var(--bg);
+      padding: 2px 0;
+      line-height: 1;
+    }
+    .pipeline-step:last-child::after { display: none; }
+    .pipeline-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .pipeline-label {
+      font-family: var(--font-disp);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--fg);
+      margin-bottom: 6px;
+    }
+    .pipeline-sub {
+      font-size: 12px;
+      color: var(--fg-3);
+      line-height: 1.5;
+    }
+
+    /* ── Score formula ───────────────────────────────────────────────────── */
+    .score-formula {
+      background: #0D0A1A;
+      border: 1px solid rgba(109, 40, 217, 0.3);
+      border-radius: 12px;
+      padding: 24px 28px;
+      font-family: 'Courier New', 'Courier', monospace;
+      font-size: 14px;
+      line-height: 1.9;
+      color: rgba(255, 255, 255, 0.7);
+      overflow-x: auto;
+    }
+    .sf-comment { color: rgba(255,255,255,0.28); }
+    .sf-key     { color: #A78BFA; font-weight: 600; }
+    .sf-val     { color: #0EA5E9; }
+    .sf-op      { color: rgba(255,255,255,0.4); }
+
+    /* ── Demo widget ─────────────────────────────────────────────────────── */
+    .tm-demo-wrap {
+      padding: 80px 0 0;
+    }
+    .tm-demo-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tm-demo-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent-warm);
+      border-radius: 50%;
+    }
+    .tm-demo-heading {
+      font-family: var(--font-disp);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 32px;
+    }
+    .tm-demo {
+      background: #0D0A1A;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(109, 40, 217, 0.25);
+      box-shadow: 0 32px 80px rgba(109, 40, 217, 0.15);
+    }
+    .tm-demo-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      gap: 16px;
+    }
+    .tm-live-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+    }
+    .tm-live-dot {
+      width: 6px; height: 6px;
+      background: #22c55e;
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: blink 2.4s ease-in-out infinite;
+    }
+    .tm-header-meta {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.05em;
+    }
+    .tm-refresh-btn {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #A78BFA;
+      background: rgba(109, 40, 217, 0.15);
+      border: 1px solid rgba(109, 40, 217, 0.35);
+      border-radius: 6px;
+      padding: 6px 14px;
+      cursor: pointer;
+      transition: background 150ms, color 150ms;
+      flex-shrink: 0;
+    }
+    .tm-refresh-btn:hover { background: rgba(109, 40, 217, 0.28); color: #C4B5FD; }
+    .tm-refresh-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .tm-body {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 360px;
+    }
+
+    /* list */
+    .tm-list {
+      border-right: 1px solid rgba(255, 255, 255, 0.07);
+      overflow-y: auto;
+    }
+    .tm-list-header {
+      display: grid;
+      grid-template-columns: 1fr 44px 60px;
+      gap: 0 8px;
+      padding: 8px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .tm-col-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.22);
+    }
+    .tm-col-label:not(:first-child) { text-align: right; }
+    .tm-row {
+      display: grid;
+      grid-template-columns: 1fr 44px 60px;
+      gap: 0 8px;
+      padding: 11px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      cursor: pointer;
+      transition: background 120ms;
+      align-items: center;
+    }
+    .tm-row.active { background: rgba(109, 40, 217, 0.18); }
+    .tm-row:hover:not(.active) { background: rgba(255, 255, 255, 0.04); }
+    .tm-name {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.8);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tm-row.active .tm-name { color: #C4B5FD; font-weight: 500; }
+    .tm-score-cell {
+      font-size: 14px;
+      font-weight: 600;
+      color: #A78BFA;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .tm-delta-cell {
+      font-size: 11px;
+      font-weight: 600;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .tm-delta-cell.up   { color: #4ade80; }
+    .tm-delta-cell.down { color: #f87171; }
+    .tm-delta-cell.flat { color: rgba(255,255,255,0.3); }
+
+    /* detail */
+    .tm-detail {
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .tm-detail-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .tm-detail-name {
+      font-family: var(--font-disp);
+      font-size: 20px;
+      color: #F5F3FF;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    .tm-detail-score-block {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .tm-detail-num {
+      font-family: var(--font-disp);
+      font-size: 38px;
+      color: #A78BFA;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      display: block;
+    }
+    .tm-detail-signal {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 3px;
+    }
+    .tm-detail-signal.up   { color: #4ade80; }
+    .tm-detail-signal.down { color: #f87171; }
+    .tm-detail-signal.flat { color: rgba(255,255,255,0.35); }
+
+    .tm-chart-wrap {
+      position: relative;
+      height: 148px;
+      flex-shrink: 0;
+    }
+
+    .tm-breakdown { display: flex; flex-direction: column; gap: 6px; }
+    .tm-breakdown-row {
+      display: grid;
+      grid-template-columns: 112px 1fr 28px;
+      gap: 0 10px;
+      align-items: center;
+    }
+    .tm-b-label {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.38);
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .tm-b-track {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 3px;
+      height: 4px;
+      overflow: hidden;
+    }
+    .tm-b-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(to right, #6D28D9, #0EA5E9);
+      transition: width 500ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .tm-b-val {
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.4);
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .tm-forecast-text {
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(14, 165, 233, 0.65);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 768px) {
+      .tm-body { grid-template-columns: 1fr; }
+      .tm-list { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); max-height: 220px; overflow-y: auto; }
+      .pipeline { flex-direction: column; }
+      .pipeline-step::after { content: '↓'; right: auto; left: 50%; top: auto; bottom: -12px; transform: translateX(-50%); }
+      .pipeline-step:last-child::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner container">
+      <a href="../index.html" class="nav-logo">CM</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#work" class="nav-link">Work</a></li>
+        <li><a href="../index.html#about" class="nav-link">About</a></li>
+        <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <a href="../assets/Christian_McLernon_CV_Hybrid.pdf" target="_blank" rel="noopener" class="nav-cv btn btn-ghost btn-sm">Download CV</a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul class="mobile-nav-links">
+      <li><a href="../index.html#work" class="mobile-nav-link">Work</a></li>
+      <li><a href="../index.html#about" class="mobile-nav-link">About</a></li>
+      <li><a href="../index.html#contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero -->
+  <section class="proj-hero">
+    <div class="container">
+      <a href="../index.html#work" class="proj-breadcrumb reveal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        All Work
+      </a>
+      <div class="proj-num reveal">04 &mdash; Independent Project</div>
+      <div class="proj-client-line reveal">Self-initiated &middot; 2026 &ndash; Present</div>
+      <h1 class="proj-title reveal">Social Media<br />Trend Matrix.</h1>
+      <div class="proj-hero-tags reveal">
+        <span class="tag">Python</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Data Engineering</span>
+        <span class="tag">Real-time Dashboard</span>
+        <span class="tag">Analytics</span>
+        <span class="tag">Self-initiated</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pull Quote -->
+  <section class="proj-insight">
+    <div class="container">
+      <blockquote class="proj-quote reveal">
+        Most marketers react to trends.<br /><em>This gives you a ten-day head start.</em>
+      </blockquote>
+      <p class="proj-quote-attr reveal">Built to give strategists an unfair advantage in trend-led content planning</p>
+    </div>
+  </section>
+
+  <!-- KPIs -->
+  <div class="container">
+    <div class="proj-kpis">
+      <div class="proj-kpi reveal">
+        <div class="proj-kpi-value">5</div>
+        <div class="proj-kpi-label">Live data sources &mdash; Google Trends, Reddit, NewsAPI, TikTok stub, and RSS fallback ingesting continuously</div>
+      </div>
+      <div class="proj-kpi reveal">
+        <div class="proj-kpi-value">Daily</div>
+        <div class="proj-kpi-label">Auto-refresh cadence at 6am UTC, with manual override via API endpoint or dashboard button</div>
+      </div>
+      <div class="proj-kpi reveal">
+        <div class="proj-kpi-value">7-day</div>
+        <div class="proj-kpi-label">Predictive horizon &mdash; linear regression on trend series with Pearson-correlation confidence scoring</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Demo -->
+  <div class="container">
+    <div class="tm-demo-wrap reveal">
+      <p class="tm-demo-eyebrow">Interactive Demo</p>
+      <h2 class="tm-demo-heading">This is what the tool actually looks like.</h2>
+      <div class="tm-demo">
+        <div class="tm-demo-header">
+          <div class="tm-live-badge">
+            <span class="tm-live-dot"></span>
+            Live · UK · 18&ndash;27
+          </div>
+          <span class="tm-header-meta" id="tm-time"></span>
+          <button class="tm-refresh-btn" id="tm-refresh-btn" onclick="refreshDemo()">↻ Refresh</button>
+        </div>
+        <div class="tm-body">
+          <div class="tm-list">
+            <div class="tm-list-header">
+              <span class="tm-col-label">Trend</span>
+              <span class="tm-col-label" style="text-align:right">Score</span>
+              <span class="tm-col-label" style="text-align:right">7-day Δ</span>
+            </div>
+            <div id="tm-list"></div>
+          </div>
+          <div class="tm-detail">
+            <div class="tm-detail-top">
+              <div class="tm-detail-name" id="tm-detail-name"></div>
+              <div class="tm-detail-score-block">
+                <span class="tm-detail-num" id="tm-detail-num"></span>
+                <span class="tm-detail-signal" id="tm-detail-signal"></span>
+              </div>
+            </div>
+            <div class="tm-chart-wrap">
+              <canvas id="trendChart"></canvas>
+            </div>
+            <div class="tm-breakdown" id="tm-breakdown"></div>
+            <p class="tm-forecast-text" id="tm-forecast-text"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="proj-body">
+    <div class="container">
+
+      <div class="proj-section reveal">
+        <div class="proj-section-label">The Problem</div>
+        <div class="proj-section-content">
+          <h2 class="proj-heading">Trend reports are yesterday&rsquo;s news by the time they publish.</h2>
+          <p class="proj-text">
+            The standard workflow for identifying emerging trends &mdash; weekly social listening reports,
+            agency briefs, platform trend pages &mdash; runs on a lag. By the time a trend makes it into a
+            deck, it&rsquo;s already past peak. For a 18&ndash;27 UK demographic that moves at TikTok speed,
+            that lag is the difference between leading a conversation and chasing it.
+          </p>
+          <p class="proj-text">
+            I built the Trend Matrix to solve this for myself first. A tool that ingests live data across
+            multiple platforms, scores trends by composite signal, and surfaces what&rsquo;s about to break
+            through &mdash; before it does.
+          </p>
+        </div>
+      </div>
+
+      <div class="proj-section reveal">
+        <div class="proj-section-label">Technical Architecture</div>
+        <div class="proj-section-content">
+          <h2 class="proj-heading">Four stages. Zero manual steps.</h2>
+          <div class="pipeline">
+            <div class="pipeline-step">
+              <div class="pipeline-num">01</div>
+              <div class="pipeline-label">Collect</div>
+              <div class="pipeline-sub">Google Trends · Reddit · NewsAPI · TikTok</div>
+            </div>
+            <div class="pipeline-step">
+              <div class="pipeline-num">02</div>
+              <div class="pipeline-label">Score</div>
+              <div class="pipeline-sub">Composite 5-factor weighted model</div>
+            </div>
+            <div class="pipeline-step">
+              <div class="pipeline-num">03</div>
+              <div class="pipeline-label">Predict</div>
+              <div class="pipeline-sub">Linear regression · 7-day horizon</div>
+            </div>
+            <div class="pipeline-step">
+              <div class="pipeline-num">04</div>
+              <div class="pipeline-label">Backtest</div>
+              <div class="pipeline-sub">Pearson correlation · accuracy log</div>
+            </div>
+          </div>
+          <p class="proj-text">
+            A Python FastAPI backend handles every stage automatically. SQLite stores all trend data locally &mdash;
+            no hosted database, no monthly bill, no moving parts. APScheduler fires the full pipeline at 6am UTC
+            daily. The frontend is vanilla JS with Chart.js, served directly from the same FastAPI process.
+          </p>
+        </div>
+      </div>
+
+      <div class="proj-section reveal">
+        <div class="proj-section-label">Scoring Model</div>
+        <div class="proj-section-content">
+          <h2 class="proj-heading">A composite score built for the 18&ndash;27 UK demographic.</h2>
+          <p class="proj-text">
+            Each trend is scored on a weighted composite across five dimensions. The weights aren&rsquo;t
+            arbitrary &mdash; they reflect how the 18&ndash;27 UK audience actually discovers and adopts
+            trends: volume-led, but increasingly driven by social velocity and peer signal over editorial coverage.
+          </p>
+          <div class="score-formula" aria-label="Scoring formula">
+            <span class="sf-comment"># Composite trend score (0–100)</span><br />
+            score <span class="sf-op">=</span> (<br />
+            &nbsp;&nbsp;<span class="sf-key">volume</span>   <span class="sf-op">*</span> <span class="sf-val">0.40</span>  <span class="sf-comment"># raw search interest — baseline awareness</span><br />
+            &nbsp;&nbsp;<span class="sf-op">+</span> <span class="sf-key">velocity</span> <span class="sf-op">*</span> <span class="sf-val">0.30</span>  <span class="sf-comment"># 7-day growth rate — early-stage signal</span><br />
+            &nbsp;&nbsp;<span class="sf-op">+</span> <span class="sf-key">reddit</span>   <span class="sf-op">*</span> <span class="sf-val">0.15</span>  <span class="sf-comment"># community discussion — leading indicator</span><br />
+            &nbsp;&nbsp;<span class="sf-op">+</span> <span class="sf-key">news</span>     <span class="sf-op">*</span> <span class="sf-val">0.10</span>  <span class="sf-comment"># editorial coverage — niche to mainstream</span><br />
+            &nbsp;&nbsp;<span class="sf-op">+</span> <span class="sf-key">demo_fit</span> <span class="sf-op">*</span> <span class="sf-val">0.05</span>  <span class="sf-comment"># UK 18–27 platform alignment</span><br />
+            )
+          </div>
+          <p class="proj-text">
+            The backward pass &mdash; <code style="font-family:monospace;font-size:14px;color:var(--accent);background:var(--page-insight-bg);padding:2px 6px;border-radius:3px;">scorer.backtest_predictions()</code> &mdash; resolves
+            seven-day-old predictions against actual outcomes, building an accuracy log that improves
+            the model over time.
+          </p>
+        </div>
+      </div>
+
+      <div class="proj-section reveal">
+        <div class="proj-section-label">Data Sources</div>
+        <div class="proj-section-content">
+          <h2 class="proj-heading">Five inputs. One signal.</h2>
+          <p class="proj-text">
+            Each source contributes a different dimension of trend intelligence. Together they form
+            a composite picture no single platform can offer &mdash; volume from Google, cultural
+            velocity from Reddit, editorial weight from news, social-first signal from TikTok.
+          </p>
+          <div class="proj-exec-grid">
+            <div class="proj-exec-cell">
+              <div class="proj-exec-title">Google Trends</div>
+              <ul class="proj-exec-items">
+                <li>pytrends library</li>
+                <li>No API key required</li>
+                <li>UK region (geo=GB)</li>
+                <li>7-day + 90-day series</li>
+              </ul>
+            </div>
+            <div class="proj-exec-cell">
+              <div class="proj-exec-title">Reddit</div>
+              <ul class="proj-exec-items">
+                <li>PRAW (Reddit API)</li>
+                <li>Subreddit velocity scoring</li>
+                <li>Comment + upvote signals</li>
+                <li>UK-focused community filter</li>
+              </ul>
+            </div>
+            <div class="proj-exec-cell">
+              <div class="proj-exec-title">NewsAPI + TikTok</div>
+              <ul class="proj-exec-items">
+                <li>NewsAPI &mdash; editorial weight</li>
+                <li>RSS fallback if key missing</li>
+                <li>TikTok stub via RapidAPI</li>
+                <li>Activates with key in .env</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-section reveal">
+        <div class="proj-section-label">Default Tracking</div>
+        <div class="proj-section-content">
+          <h2 class="proj-heading">Ten phrases. Tunable to any brief.</h2>
+          <p class="proj-text">
+            The dashboard ships with ten default tracked phrases chosen to map the cultural vocabulary
+            of the 18&ndash;27 UK cohort. Every phrase can be added, removed, or swapped to match a
+            specific client brief or content calendar.
+          </p>
+          <div class="proj-exec-grid">
+            <div class="proj-exec-cell">
+              <div class="proj-exec-title">Aesthetic &amp; Identity</div>
+              <ul class="proj-exec-items">
+                <li>#aesthetic</li>
+                <li>#grwm</li>
+                <li>#ootd</li>
+                <li>that girl</li>
+              </ul>
+            </div>
+            <div class="proj-exec-cell">
+              <div class="proj-exec-title">Lifestyle</div>
+              <ul class="proj-exec-items">
+                <li>girl dinner</li>
+                <li>hot girl walk</li>
+                <li>soft life</li>
+                <li>de-influencing</li>
+              </ul>
+            </div>
+            <div class="proj-exec-cell">
+              <div class="proj-exec-title">Platform</div>
+              <ul class="proj-exec-items">
+                <li>#fyp</li>
+                <li>#viral</li>
+                <li>Custom phrases via UI</li>
+                <li>Brief-specific overrides</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-section reveal">
+        <div class="proj-section-label">Why I Built It</div>
+        <div class="proj-section-content">
+          <h2 class="proj-heading">A strategist who can build their own tools is a different kind of asset.</h2>
+          <p class="proj-text">
+            The Trend Matrix isn&rsquo;t a portfolio piece dressed up as a project. It&rsquo;s a tool I
+            actually use. It started as a way to answer a question I kept running into while building
+            campaign strategies: <em>&ldquo;How do I know this trend is still rising and hasn&rsquo;t already peaked?&rdquo;</em>
+          </p>
+          <p class="proj-text">
+            Building it required learning FastAPI, SQLite schema design, async scheduling, and enough
+            statistics to implement confidence-scored predictions. The result sits at the intersection
+            of marketing strategy and data engineering &mdash; and makes both sharper.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Next project -->
+  <div class="proj-next">
+    <div class="container">
+      <a href="receipt-of-reality.html" class="proj-next-link reveal">
+        <div>
+          <div class="proj-next-eyebrow">Back to the Start</div>
+          <div class="proj-next-title">Receipt of Reality</div>
+          <div class="proj-next-client">Barclays &middot; Higher Education Account &middot; 2025</div>
+        </div>
+        <svg class="proj-next-arrow" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-copy">&copy; <span id="year"></span> Christian McLernon</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="../index.html#work" class="footer-link">Work</a>
+        <a href="../index.html#about" class="footer-link">About</a>
+        <a href="../index.html#contact" class="footer-link">Contact</a>
+        <a href="../assets/Christian_McLernon_CV_Hybrid.pdf" target="_blank" rel="noopener" class="footer-link">CV</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+  (function () {
+    const TM_DATA = [
+      {
+        name: '#aesthetic',
+        score: 87, delta: +12.3,
+        history: [68, 72, 74, 78, 82, 85, 87],
+        forecast: [89, 91, 92, 91],
+        breakdown: { volume: 94, velocity: 88, reddit: 76, news: 68, demo: 92 }
+      },
+      {
+        name: 'hot girl walk',
+        score: 79, delta: +8.1,
+        history: [63, 65, 68, 71, 74, 77, 79],
+        forecast: [81, 83, 84, 83],
+        breakdown: { volume: 83, velocity: 79, reddit: 70, news: 57, demo: 87 }
+      },
+      {
+        name: 'that girl',
+        score: 72, delta: +5.4,
+        history: [60, 62, 63, 66, 68, 70, 72],
+        forecast: [74, 75, 76, 75],
+        breakdown: { volume: 76, velocity: 71, reddit: 64, news: 53, demo: 84 }
+      },
+      {
+        name: '#grwm',
+        score: 68, delta: -3.2,
+        history: [75, 74, 73, 72, 71, 70, 68],
+        forecast: [67, 66, 65, 66],
+        breakdown: { volume: 79, velocity: 41, reddit: 75, news: 61, demo: 90 }
+      },
+      {
+        name: 'de-influencing',
+        score: 63, delta: +1.8,
+        history: [59, 59, 60, 61, 62, 62, 63],
+        forecast: [64, 64, 65, 64],
+        breakdown: { volume: 65, velocity: 57, reddit: 69, news: 74, demo: 76 }
+      },
+      {
+        name: 'soft life',
+        score: 56, delta: -1.1,
+        history: [60, 59, 59, 58, 57, 57, 56],
+        forecast: [56, 55, 55, 56],
+        breakdown: { volume: 60, velocity: 44, reddit: 56, news: 47, demo: 72 }
+      },
+      {
+        name: '#ootd',
+        score: 51, delta: -7.3,
+        history: [66, 63, 60, 57, 55, 53, 51],
+        forecast: [50, 49, 49, 50],
+        breakdown: { volume: 57, velocity: 31, reddit: 53, news: 43, demo: 67 }
+      },
+      {
+        name: 'girl dinner',
+        score: 42, delta: -12.5,
+        history: [70, 64, 58, 53, 49, 45, 42],
+        forecast: [40, 38, 37, 38],
+        breakdown: { volume: 46, velocity: 20, reddit: 50, news: 37, demo: 58 }
+      }
+    ];
+
+    let activeIdx = 0;
+    let chartInst = null;
+
+    function dirClass(d) { return d > 2 ? 'up' : d < -2 ? 'down' : 'flat'; }
+    function signalLabel(d) {
+      if (d > 8)  return '↑ Rising fast';
+      if (d > 2)  return '↑ Growing';
+      if (d < -8) return '↓ Fading';
+      if (d < -2) return '↓ Easing';
+      return '→ Stable';
+    }
+    function fmtDelta(d) { return (d > 0 ? '+' : '') + d.toFixed(1) + '%'; }
+    function dayLabel(offset) {
+      const d = new Date();
+      d.setDate(d.getDate() + offset);
+      return d.toLocaleDateString('en-GB', { weekday: 'short' });
+    }
+    function futureDate(days) {
+      const d = new Date();
+      d.setDate(d.getDate() + days);
+      return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+    }
+
+    function renderList() {
+      const el = document.getElementById('tm-list');
+      el.innerHTML = TM_DATA.map((t, i) => `
+        <div class="tm-row${i === activeIdx ? ' active' : ''}" onclick="window.__tmSelect(${i})">
+          <span class="tm-name">${t.name}</span>
+          <span class="tm-score-cell">${t.score}</span>
+          <span class="tm-delta-cell ${dirClass(t.delta)}">${fmtDelta(t.delta)}</span>
+        </div>`).join('');
+    }
+
+    function renderDetail(t) {
+      document.getElementById('tm-detail-name').textContent = t.name;
+      document.getElementById('tm-detail-num').textContent  = t.score;
+      const sig = document.getElementById('tm-detail-signal');
+      sig.textContent  = signalLabel(t.delta);
+      sig.className    = 'tm-detail-signal ' + dirClass(t.delta);
+
+      const peak      = Math.max(...t.forecast);
+      document.getElementById('tm-forecast-text').textContent =
+        '7-day forecast — score projected to reach ' + peak + ' by ' + futureDate(7);
+
+      // breakdown
+      const weights = [
+        { label: 'Volume (40%)',    val: t.breakdown.volume },
+        { label: 'Velocity (30%)',  val: t.breakdown.velocity },
+        { label: 'Reddit (15%)',    val: t.breakdown.reddit },
+        { label: 'News (10%)',      val: t.breakdown.news },
+        { label: 'Demo fit (5%)',   val: t.breakdown.demo }
+      ];
+      document.getElementById('tm-breakdown').innerHTML = weights.map(w => `
+        <div class="tm-breakdown-row">
+          <span class="tm-b-label">${w.label}</span>
+          <div class="tm-b-track"><div class="tm-b-fill" style="width:${w.val}%"></div></div>
+          <span class="tm-b-val">${w.val}</span>
+        </div>`).join('');
+
+      renderChart(t);
+    }
+
+    function renderChart(t) {
+      const canvas = document.getElementById('trendChart');
+      const ctx    = canvas.getContext('2d');
+      if (chartInst) { chartInst.destroy(); chartInst = null; }
+
+      const histLabels = Array.from({ length: 7 }, (_, i) => dayLabel(i - 6));
+      const fcastLabels = Array.from({ length: 4 }, (_, i) => dayLabel(i + 1));
+      const allLabels   = [...histLabels, ...fcastLabels];
+
+      const histData  = [...t.history, null, null, null, null];
+      const fcastData = [null, null, null, null, null, null, t.history[6], ...t.forecast];
+
+      chartInst = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: allLabels,
+          datasets: [
+            {
+              label: 'Score',
+              data: histData,
+              borderColor: '#A78BFA',
+              borderWidth: 2,
+              pointBackgroundColor: '#A78BFA',
+              pointRadius: 3,
+              pointHoverRadius: 5,
+              tension: 0.4,
+              fill: true,
+              backgroundColor: function (ctx2) {
+                const chart = ctx2.chart;
+                const { chartArea } = chart;
+                if (!chartArea) return 'transparent';
+                const g = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+                g.addColorStop(0, 'rgba(109,40,217,0.22)');
+                g.addColorStop(1, 'rgba(109,40,217,0)');
+                return g;
+              },
+              spanGaps: false
+            },
+            {
+              label: 'Forecast',
+              data: fcastData,
+              borderColor: '#0EA5E9',
+              borderWidth: 2,
+              borderDash: [5, 4],
+              pointBackgroundColor: '#0EA5E9',
+              pointRadius: 3,
+              pointHoverRadius: 5,
+              tension: 0.4,
+              fill: false,
+              spanGaps: false
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: { duration: 400 },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(13,10,26,0.92)',
+              borderColor: 'rgba(167,139,250,0.3)',
+              borderWidth: 1,
+              titleColor: 'rgba(255,255,255,0.5)',
+              bodyColor: '#A78BFA',
+              padding: 10,
+              callbacks: {
+                label: (ctx2) => ' Score: ' + (ctx2.parsed.y ?? '—')
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: 'rgba(255,255,255,0.05)', drawBorder: false },
+              ticks: { color: 'rgba(255,255,255,0.3)', font: { size: 10 }, maxRotation: 0 }
+            },
+            y: {
+              grid: { color: 'rgba(255,255,255,0.05)', drawBorder: false },
+              ticks: { color: 'rgba(255,255,255,0.3)', font: { size: 10 } },
+              min: Math.max(0,  Math.min(...t.history, ...t.forecast) - 12),
+              max: Math.min(100, Math.max(...t.history, ...t.forecast) + 6)
+            }
+          }
+        }
+      });
+    }
+
+    // exposed globally so inline onclick works
+    window.__tmSelect = function (idx) {
+      activeIdx = idx;
+      renderList();
+      renderDetail(TM_DATA[idx]);
+    };
+
+    window.refreshDemo = function () {
+      const btn = document.getElementById('tm-refresh-btn');
+      btn.textContent = '↻ Refreshing…';
+      btn.disabled = true;
+      setTimeout(function () {
+        TM_DATA.forEach(function (t) {
+          const nudge = parseFloat(((Math.random() - 0.48) * 2.5).toFixed(1));
+          t.score    = Math.max(20, Math.min(100, t.score + Math.round(nudge)));
+          t.delta    = parseFloat((t.delta + nudge * 0.4).toFixed(1));
+          t.history  = [...t.history.slice(1), t.score];
+        });
+        TM_DATA.sort(function (a, b) { return b.score - a.score; });
+        if (activeIdx >= TM_DATA.length) activeIdx = 0;
+        renderList();
+        renderDetail(TM_DATA[activeIdx]);
+        const now = new Date();
+        document.getElementById('tm-time').textContent =
+          now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) + ' GMT';
+        btn.textContent = '↻ Refresh';
+        btn.disabled = false;
+      }, 700);
+    };
+
+    // init
+    const now = new Date();
+    document.getElementById('tm-time').textContent =
+      now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) + ' GMT';
+    renderList();
+    renderDetail(TM_DATA[0]);
+  }());
+  </script>
+</body>
+</html>
