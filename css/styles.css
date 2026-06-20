@@ -624,6 +624,14 @@ body {
   line-height: 1.4;
 }
 
+.project-metrics-preface {
+  font-size: 11px;
+  color: var(--fg-3);
+  font-style: italic;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
 /* ─── Research ───────────────────────────────────────────────────────────── */
 .research { background: var(--bg-raised); }
 
