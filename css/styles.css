@@ -457,6 +457,14 @@ body {
   line-height: 1.45;
 }
 
+.stat-preface {
+  font-size: 11px;
+  color: var(--fg-3);
+  font-style: italic;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
 /* ─── Work ───────────────────────────────────────────────────────────────── */
 .work-list {
   display: grid;
