@@ -19,6 +19,8 @@
     .project--cowpr:hover     { box-shadow: 0 24px 64px rgba(45,106,79,.13)  !important; border-color: rgba(45,106,79,.22)  !important; }
     .project--matrix:hover    { box-shadow: 0 24px 64px rgba(109,40,217,.13) !important; border-color: rgba(109,40,217,.22) !important; }
     .project--setlist:hover   { box-shadow: 0 24px 64px rgba(232,65,42,.13)  !important; border-color: rgba(232,65,42,.22)  !important; }
+    .project--atoa:hover      { box-shadow: 0 24px 64px rgba(217,119,6,.13)   !important; border-color: rgba(217,119,6,.22)   !important; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.85); } }
   </style>
 </head>
 <body>
@@ -373,6 +375,53 @@
               <div class="metric">
                 <span class="metric-value">4</span>
                 <span class="metric-label">Audience segments</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 06 — Attention → Action -->
+        <article class="project project--atoa reveal" style="background: radial-gradient(ellipse at 100% 0%, rgba(217,119,6,.07) 0%, transparent 55%), #ffffff;">
+          <div class="project-num">06</div>
+          <div class="project-body">
+            <div class="project-header">
+              <div>
+                <div class="project-client">Independent Research Project &middot; 2026 &ndash; Present</div>
+                <h3 class="project-title">Attention &rarr; Action</h3>
+              </div>
+              <span class="project-cta" style="display:inline-flex; align-items:center; gap:8px; color: rgba(217,119,6,.85); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em; cursor: default;">
+                <span style="width:7px; height:7px; border-radius:50%; background: rgba(217,119,6,.8); animation: pulse 2s infinite;"></span>
+                In Progress
+              </span>
+            </div>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">NLP / FinBERT</span>
+              <span class="tag">Data Pipeline</span>
+              <span class="tag">Crypto Markets</span>
+              <span class="tag">Predictive Modelling</span>
+              <span class="tag">Self-initiated</span>
+            </div>
+            <p class="project-desc">
+              A reproducible data science project testing whether online attention and emotional framing predict
+              near-term BTC and ETH trading behaviour. A five-stage Python pipeline ingests Google Trends,
+              GDELT news headlines, and Reddit posts; FinBERT scores sentiment per document; and a leakage-free
+              predictive model &mdash; trained on a strict chronological split &mdash; tests whether attention
+              spikes on day <em>t</em> predict abnormal volume and price direction on day <em>t+1</em>.
+              Granger causality analysis addresses whether attention leads trading activity or merely reacts to it.
+            </p>
+            <div class="project-metrics">
+              <div class="metric">
+                <span class="metric-value">BTC &amp; ETH</span>
+                <span class="metric-label">Assets under study</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">18 Mo.</span>
+                <span class="metric-label">Historical data window</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">FinBERT</span>
+                <span class="metric-label">NLP sentiment model</span>
               </div>
             </div>
           </div>
