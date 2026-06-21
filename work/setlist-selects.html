@@ -12,143 +12,70 @@
   <link rel="stylesheet" href="../css/project.css" />
   <style>
     :root {
-      --accent:        #e8412a;
-      --accent-light:  #f07060;
-      --accent-warm:   #e6a93a;
-      --accent-warm-l: #f2c96a;
-      --bg:            #0e0d0c;
-      --bg-raised:     #17130f;
-      --bg-overlay:    #211b14;
-      --page-insight-bg: #1c1510;
+      --accent:          #e8412a;
+      --accent-light:    #f07060;
+      --accent-warm:     #e6a93a;
+      --accent-warm-l:   #f2c96a;
+      --bg:              #FAF7EF;
+      --bg-raised:       #F0EAE0;
+      --bg-overlay:      #E8E1D4;
+      --page-insight-bg: #FDF3F1;
     }
-
-    /* Dark theme overrides for this page */
-    body { background: var(--bg); }
-
-    .nav {
-      background: rgba(14,13,12,.92);
-      border-bottom-color: rgba(244,240,232,.08);
-    }
-    .nav-logo,
-    .nav-link,
-    .nav-cv { color: #f4f0e8; }
-    .nav-link:hover { color: #e8412a; }
-    .nav-cv {
-      border-color: rgba(244,240,232,.25);
-      color: #f4f0e8;
-    }
-    .nav-cv:hover { background: rgba(244,240,232,.08); }
-    .nav-menu-btn span { background: #f4f0e8; }
-
-    .mobile-menu { background: #17130f; }
-    .mobile-nav-link { color: #f4f0e8; }
-
     .proj-hero {
       background:
-        radial-gradient(ellipse at 80% 0%, rgba(232,65,42,.14) 0%, transparent 55%),
-        radial-gradient(ellipse at 0% 100%, rgba(230,169,58,.06) 0%, transparent 50%),
-        #0e0d0c;
-      color: #f4f0e8;
+        radial-gradient(ellipse at 78% 0%, rgba(232,65,42,.09) 0%, transparent 55%),
+        radial-gradient(ellipse at 5% 100%, rgba(230,169,58,.07) 0%, transparent 50%),
+        var(--bg);
     }
 
-    .proj-breadcrumb { color: #9a8f82; }
-    .proj-breadcrumb:hover { color: #f4f0e8; }
-    .proj-num { color: #6b6256; }
-    .proj-client-line { color: #9a8f82; }
-    .proj-title { color: #f4f0e8; }
-    .proj-hero-tags .tag {
-      background: rgba(244,240,232,.07);
-      color: #9a8f82;
-      border: 1px solid rgba(244,240,232,.1);
-    }
-
-    .proj-insight {
-      background: #17130f;
-      border-top: 1px solid rgba(244,240,232,.08);
-      border-bottom: 1px solid rgba(244,240,232,.08);
-    }
-    .proj-quote { color: #f4f0e8; }
-    .proj-quote-attr { color: #9a8f82; }
-
-    .proj-kpis {
-      border-top: 1px solid rgba(244,240,232,.08);
-      border-bottom: 1px solid rgba(244,240,232,.08);
-    }
-    .proj-kpi-value { color: #e8412a; }
-    .proj-kpi-label { color: #9a8f82; }
-    .proj-kpi { border-right-color: rgba(244,240,232,.08); }
-
-    .proj-body { background: #0e0d0c; }
-    .proj-section-label { color: #6b6256; border-left-color: #e8412a; }
-    .proj-heading { color: #f4f0e8; }
-    .proj-text { color: #cdc6ba; }
-    .proj-text strong { color: #f4f0e8; }
-    .proj-exec-grid { border-color: rgba(244,240,232,.08); }
-    .proj-exec-cell { border-right-color: rgba(244,240,232,.08); }
-    .proj-exec-title { color: #f4f0e8; }
-    .proj-exec-items li { color: #9a8f82; }
-    .proj-exec-items li::before { color: #e8412a; }
-
-    /* Storyboard / three-beats visual */
+    /* Three-beat cards */
     .beats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 36px;
+      gap: 20px;
     }
     .beat-card {
-      background: #17130f;
-      border: 1px solid rgba(244,240,232,.08);
-      border-top: 4px solid #e8412a;
-      border-radius: 8px;
-      padding: 32px 28px;
+      background: var(--bg-raised);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 28px 24px;
     }
     .beat-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 48px;
-      color: #e8412a;
+      font-family: var(--font-disp);
+      font-size: 42px;
+      color: var(--accent);
       line-height: 1;
     }
     .beat-title {
-      font-size: 20px;
+      font-size: 11px;
       font-weight: 600;
-      color: #f4f0e8;
+      letter-spacing: .1em;
       text-transform: uppercase;
-      letter-spacing: .06em;
+      color: var(--fg);
       margin-top: 14px;
     }
     .beat-desc {
-      font-size: 15px;
-      color: #9a8f82;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--fg-2);
       margin-top: 10px;
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
-    /* Waveform decoration */
+    /* Waveform accent */
     .waveform {
       display: flex;
       align-items: flex-end;
-      gap: 5px;
-      height: 40px;
-      margin-bottom: 32px;
+      gap: 4px;
+      height: 32px;
+      margin-bottom: 28px;
     }
     .waveform span {
       display: block;
-      width: 5px;
+      width: 4px;
       border-radius: 2px;
-      background: #e8412a;
-      opacity: .7;
-    }
-
-    .proj-download {
-      background: #17130f;
-      border: 1px solid rgba(244,240,232,.08);
-    }
-    .proj-download-text { color: #9a8f82; }
-    .proj-download-text em { color: #f4f0e8; }
-
-    .proj-kpi-preface {
-      color: #6b6256;
+      opacity: .55;
     }
   </style>
 </head>
@@ -222,7 +149,7 @@
         <div class="proj-kpi-value">4</div>
         <div class="proj-kpi-label">Audience segments mapped across Instagram and TikTok</div>
       </div>
-      <p class="proj-kpi-preface reveal">Campaign developed as part of my internship with the Columbo Group (Blues Kitchen) marketing team. Specific social analytics figures are redacted for confidentiality.</p>
+      <p class="proj-kpi-preface reveal">Campaign developed during my internship with the Columbo Group (Blues Kitchen) marketing team. Specific social analytics figures are redacted for confidentiality.</p>
     </div>
   </div>
 
@@ -242,15 +169,15 @@
           <p class="proj-text">
             During my internship with the Columbo Group marketing team, I identified this gap and developed
             <em>Setlist Selects</em> &mdash; a short-form vertical video series profiling resident performers through
-            three consistent story beats, designed to be shot quickly, cross-posted across Reels and TikTok, and
-            measurable all the way to booked covers.
+            three consistent story beats, designed to be shot quickly, cross-posted across Reels and TikTok,
+            and measurable all the way to booked covers.
           </p>
           <div class="proj-exec-grid">
             <div class="proj-exec-cell">
               <div class="proj-exec-title">Format</div>
               <ul class="proj-exec-items">
                 <li>Vertical 9:16 Reels &amp; TikTok</li>
-                <li>60s hero + 3–4 cut-downs</li>
+                <li>60s hero + 3&ndash;4 cut-downs per shoot</li>
                 <li>Captions burned in for silent autoplay</li>
               </ul>
             </div>
@@ -258,7 +185,7 @@
               <div class="proj-exec-title">Rollout</div>
               <ul class="proj-exec-items">
                 <li>Phase 1: 3-episode pilot, 1 venue</li>
-                <li>Phase 2: fortnightly across all 4</li>
+                <li>Phase 2: fortnightly across all 4 venues</li>
                 <li>Phase 3: paid amplification &amp; guest names</li>
               </ul>
             </div>
@@ -279,20 +206,20 @@
         <div class="proj-section-content">
           <h2 class="proj-heading">Likes are not the win.</h2>
           <p class="proj-text">
-            The campaign brief came out of a clear data observation: story-led content &mdash; artist interviews,
-            behind-the-scenes moments &mdash; consistently drives the engagement actions that actually matter to the
-            algorithm and to the business. Not likes. <strong>Saves. Shares. Comments.</strong>
+            The campaign came out of a clear data observation: story-led content &mdash; artist interviews,
+            behind-the-scenes moments &mdash; consistently drives the engagement actions that actually matter
+            to the algorithm and to the business. Not likes. <strong>Saves. Shares. Comments.</strong>
           </p>
           <p class="proj-text">
-            A like is a reflex. A save is intent to return. A share is free reach to a new audience. And a comment
-            is a conversation. Analysis of content performance by type showed artist stories produced the widest gap
-            between surface likes and deep engagement &mdash; that&rsquo;s where the format lives.
+            A like is a reflex. A save is intent to return. A share is free reach to a new audience. A comment
+            is a conversation. Analysis of content performance by type showed artist stories produced the widest
+            gap between surface likes and deep engagement &mdash; that&rsquo;s where the format lives.
           </p>
           <p class="proj-text">
-            The PEST context made the case stronger: squeezed discretionary spend means every night out has to
-            justify itself, and free, emotionally resonant content lowers the consideration barrier. Meanwhile,
-            TikTok&rsquo;s algorithm actively rewards the authentic, human stories that live music venues are
-            uniquely positioned to tell.
+            The PEST context strengthened the case: squeezed discretionary spend means every night out has to
+            justify itself, and free, emotionally resonant content lowers the consideration barrier. TikTok&rsquo;s
+            algorithm actively rewards the authentic, human stories that live music venues are uniquely positioned
+            to tell. Three of the four macro currents ran in our favour.
           </p>
         </div>
       </div>
@@ -303,22 +230,22 @@
           <h2 class="proj-heading">One artist. One story. Three beats.</h2>
           <p class="proj-text">
             Every episode follows the same structure &mdash; instantly recognisable, endlessly repeatable across
-            the full roster of resident performers.
+            the full roster of resident performers across all four venues.
           </p>
 
           <div class="waveform" aria-hidden="true">
-            <span style="height:35%;"></span>
+            <span style="height:35%; background:#e8412a;"></span>
             <span style="height:70%; background:#e8412a;"></span>
-            <span style="height:50%;"></span>
+            <span style="height:50%; background:#e6a93a;"></span>
             <span style="height:90%; background:#e8412a;"></span>
-            <span style="height:40%;"></span>
-            <span style="height:65%; background:#e6a93a;"></span>
+            <span style="height:40%; background:#e6a93a;"></span>
+            <span style="height:65%; background:#e8412a;"></span>
             <span style="height:80%; background:#e8412a;"></span>
-            <span style="height:45%;"></span>
-            <span style="height:55%;"></span>
+            <span style="height:45%; background:#e6a93a;"></span>
+            <span style="height:55%; background:#e8412a;"></span>
             <span style="height:100%; background:#e8412a;"></span>
-            <span style="height:38%;"></span>
-            <span style="height:72%; background:#e6a93a;"></span>
+            <span style="height:38%; background:#e6a93a;"></span>
+            <span style="height:72%; background:#e8412a;"></span>
           </div>
 
           <div class="beats-grid">
@@ -339,12 +266,12 @@
             </div>
           </div>
 
-          <p class="proj-text" style="margin-top:32px;">
-            The episode structure opens cold &mdash; a scroll-stopping hook line, no intro &mdash; then credits the
-            artist with a red lower-third, carries through Roots &rarr; Record &rarr; Ritual tightly to camera,
-            cuts to a live performance moment with real venue sound, and closes to a CTA driving to the next gig.
-            One weekend shoot yields a 60-second hero Reel plus three or four shorter cut-downs, all cross-posted
-            to IG and TikTok.
+          <p class="proj-text">
+            The episode opens cold &mdash; a scroll-stopping hook line, no intro &mdash; then credits the
+            artist with a lower-third, carries through Roots &rarr; Record &rarr; Ritual to camera, cuts to a
+            live performance moment with real venue sound, and closes with a CTA driving to the next gig.
+            One weekend shoot yields a 60-second hero Reel plus three or four shorter cut-downs, all
+            cross-posted to IG and TikTok.
           </p>
         </div>
       </div>
@@ -354,19 +281,19 @@
         <div class="proj-section-content">
           <h2 class="proj-heading">From scroll to seat.</h2>
           <p class="proj-text">
-            The pitch positioned every episode as an <strong>acquisition asset</strong>, not a brand post. The
-            funnel runs from vertical reach into profile visits, profile visits into follows, follows into the
-            email and ticketing list, and that list into measurable footfall and booked covers.
+            The pitch positioned every episode as an <strong>acquisition asset</strong>, not a brand post.
+            The funnel runs from vertical reach into profile visits, profile visits into follows, follows into
+            the email and ticketing list, and that list into measurable footfall and booked covers.
           </p>
           <p class="proj-text">
-            Specific target figures are set against three KPIs: six-month follower lift, saves-plus-shares per
-            1k views (the campaign&rsquo;s north-star metric over likes), and attributable bookings per month. These
-            were presented to the marketing team with placeholder values to be validated against real CRM and
-            ticketing data before the pilot launched.
+            Targets were presented against three north-star KPIs: six-month follower lift, saves-plus-shares
+            per 1,000 views (the campaign&rsquo;s primary metric, chosen over raw likes), and attributable
+            bookings per month &mdash; all set as targets to be validated against real CRM and ticketing data
+            before the pilot shoot.
           </p>
           <p class="proj-text">
-            The competitive positioning argument was simple: Blues Kitchen already owns a rare spot &mdash; credibly
-            music-led but warm and accessible. No competitor in the London live-music landscape was telling
+            The competitive positioning argument was simple: Blues Kitchen already owns a rare spot in the
+            London landscape &mdash; credibly music-led but warm and accessible. No competitor was telling
             the artist stories behind their rooms. <em>That lane was empty.</em>
           </p>
         </div>
