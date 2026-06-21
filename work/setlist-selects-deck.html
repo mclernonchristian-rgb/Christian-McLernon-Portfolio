@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setlist Selects — Blues Kitchen Campaign Proposal · Christian McLernon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0e0d0c; --panel:#17130f; --panel2:#211b14; --paper:#f4f0e8;
+    --muted:#9a8f82; --dim:#6b6256; --line:rgba(244,240,232,.13);
+    --red:#e8412a; --amber:#e6a93a;
+    --t-kicker:23px; --t-title:60px; --t-sub:38px; --t-body:29px; --t-small:22px;
+    --pad:92px; --padb:74px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:#0e0d0c;height:100%;overflow:hidden;}
+  deck-stage:not(:defined){visibility:hidden}
+  @keyframes wave{0%,100%{transform:scaleY(0.45);}50%{transform:scaleY(1);}}
+  .back-link{
+    position:fixed;top:18px;left:22px;z-index:9999;
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Space Mono',monospace;font-size:13px;font-weight:400;
+    color:rgba(244,240,232,.55);text-decoration:none;
+    background:rgba(14,13,12,.6);backdrop-filter:blur(8px);
+    padding:7px 14px;border-radius:100px;border:1px solid rgba(244,240,232,.12);
+    transition:color .15s,background .15s;
+  }
+  .back-link:hover{color:var(--paper);background:rgba(14,13,12,.85);}
+  .back-link svg{flex:none;}
+</style>
+</head>
+<body>
+
+<a href="setlist-selects.html" class="back-link">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+  Back to case study
+</a>
+
+<deck-stage width="1920" height="1080">
+
+<!-- ============================= 01 · TITLE ============================= -->
+<section data-label="Title" data-screen-label="01" data-speaker-notes="Welcome. This is the pitch for Setlist Selects — a behind-the-scenes social campaign built entirely around our in-house performers. Live music is what makes us, but right now the people on our stages are the story we tell least. This deck makes the case and shows exactly how we'd shoot it." style="background:var(--ink); color:var(--paper);">
+  <div style="height:100%; display:flex; flex-direction:column; justify-content:space-between; align-items:center; text-align:center; padding:80px var(--pad) var(--padb); position:relative;">
+    <div style="position:absolute; top:0; left:var(--pad); right:var(--pad); height:7px; background:var(--red);"></div>
+    <div style="display:flex; justify-content:space-between; align-items:center; width:100%; font-family:'Space Mono',monospace; font-size:var(--t-small); letter-spacing:.16em; text-transform:uppercase; color:var(--muted); padding-top:26px;">
+      <span style="display:flex; align-items:center; gap:14px;"><span style="width:13px; height:13px; border-radius:50%; background:var(--red);"></span>The Blues Kitchen</span>
+      <span style="color:var(--dim);">Campaign Proposal · 2026</span>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center;">
+      <div style="display:inline-flex; align-items:center; gap:16px; border:3px solid var(--red); color:var(--red); border-radius:100px; padding:14px 36px; font-family:'Space Mono',monospace; font-size:24px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:48px;"><span style="width:16px; height:16px; border-radius:50%; background:var(--red);"></span>Live Session</div>
+      <h1 style="font-family:'Anton',sans-serif; font-size:204px; line-height:1.02; letter-spacing:-0.005em; text-transform:uppercase; font-weight:400; text-align:center;">Setlist<br><span style="color:var(--red);">Selects</span></h1>
+      <div style="display:flex; align-items:flex-end; gap:9px; height:84px; margin-top:88px;">
+        <div style="width:11px; transform-origin:bottom; background:var(--dim); height:40%; animation:wave 1.1s ease-in-out infinite;"></div><div style="width:11px; transform-origin:bottom; background:var(--red); height:80%; animation:wave 1.1s ease-in-out .1s infinite;"></div><div style="width:11px; transform-origin:bottom; background:var(--muted); height:55%; animation:wave 1.1s ease-in-out .2s infinite;"></div><div style="width:11px; transform-origin:bottom; background:var(--red); height:100%; animation:wave 1.1s ease-in-out .3s infinite;"></div><div style="width:11px; transform-origin:bottom; background:var(--dim); height:38%; animation:wave 1.1s ease-in-out .15s infinite;"></div><div style="width:11px; transform-origin:bottom; background:var(--red); height:72%; animation:wave 1.1s ease-in-out .25s infinite;"></div><div style="width:11px; transform-origin:bottom; background:var(--muted); height:50%; animation:wave 1.1s ease-in-out .35s infinite;"></div><div style="width:11px; transform-origin:bottom; background:var(--red); height:92%; animation:wave 1.1s ease-in-out .05s infinite;"></div><div style="width:11px; transform-origin:bottom; background:var(--dim); height:34%; animation:wave 1.1s ease-in-out .28s infinite;"></div><div style="width:11px; transform-origin:bottom; background:var(--muted); height:60%; animation:wave 1.1s ease-in-out .18s infinite;"></div><div style="width:11px; transform-origin:bottom; background:var(--red); height:78%; animation:wave 1.1s ease-in-out .32s infinite;"></div><div style="width:11px; transform-origin:bottom; background:var(--dim); height:44%; animation:wave 1.1s ease-in-out .12s infinite;"></div><div style="width:11px; transform-origin:bottom; background:var(--red); height:88%; animation:wave 1.1s ease-in-out .22s infinite;"></div><div style="width:11px; transform-origin:bottom; background:var(--muted); height:48%; animation:wave 1.1s ease-in-out .38s infinite;"></div><div style="width:11px; transform-origin:bottom; background:var(--red); height:68%; animation:wave 1.1s ease-in-out .08s infinite;"></div>
+      </div>
+    </div>
+    <div style="font-size:var(--t-sub); font-weight:500; color:#cdc6ba; max-width:1240px; line-height:1.3;">Intimate artist interviews, shot vertical — the resident performers behind Blues Kitchen, in their own words.</div>
+  </div>
+</section>
+
+<!-- ============================= 02 · OPPORTUNITY ============================= -->
+<section data-label="Opportunity" data-screen-label="02" data-speaker-notes="The strategic gap. We run live music seven nights a week across four venues — that's our entire identity. But scan our feed and it skews to food, drink and club nights. The performers — the single thing competitors can't copy — barely feature. That's the opening Setlist Selects walks through." style="background:var(--ink); color:var(--paper);">
+  <div style="height:100%; display:flex; flex-direction:column; padding:var(--pad) var(--pad) var(--padb); position:relative;">
+    <div style="display:flex; justify-content:space-between; align-items:center; font-family:'Space Mono',monospace; font-size:var(--t-small); letter-spacing:.14em; text-transform:uppercase; color:var(--dim);">
+      <span style="display:flex; align-items:center; gap:13px; color:var(--muted);"><span style="width:11px; height:11px; border-radius:50%; background:var(--red);"></span>The Opportunity</span>
+      <span>Setlist Selects · 02</span>
+    </div>
+    <h2 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:var(--t-title); text-transform:uppercase; letter-spacing:-0.012em; margin-top:30px; line-height:1.02; max-width:1400px;">Our biggest asset is the one<br>we post about least</h2>
+    <div style="flex:1; display:flex; align-items:center; gap:70px; margin-top:34px;">
+      <div style="flex:none; width:560px;">
+        <div style="font-family:'Anton',sans-serif; font-size:200px; line-height:0.8; color:var(--red);">7</div>
+        <div style="font-size:var(--t-body); color:#cdc6ba; margin-top:14px; line-height:1.35;"><strong style="color:var(--paper);">nights of live music</strong>, every week, across four venues — a programme no competitor in the city matches.</div>
+        <div style="height:1px; background:var(--line); margin:40px 0;"></div>
+        <div style="font-family:'Anton',sans-serif; font-size:200px; line-height:0.8; color:var(--paper);">~0</div>
+        <div style="font-size:var(--t-body); color:#cdc6ba; margin-top:14px; line-height:1.35;"><strong style="color:var(--paper);">dedicated artist-story content.</strong> The musicians are our deepest differentiator and our quietest channel.</div>
+      </div>
+      <div style="flex:1; align-self:stretch; display:flex; flex-direction:column; justify-content:center; background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:54px 56px;">
+        <div style="font-family:'Space Mono',monospace; font-size:var(--t-small); letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">Content mix today — indicative</div>
+        <div style="font-size:var(--t-small); color:var(--dim); margin-bottom:38px;">Share of recent posts by theme · proportions illustrative</div>
+        <div style="display:flex; flex-direction:column; gap:30px;">
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:var(--t-body); margin-bottom:12px;"><span>Food &amp; drink</span><span style="font-family:'Space Mono',monospace; color:var(--muted);"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></span></div>
+            <div style="height:26px; background:var(--panel2); border-radius:3px; overflow:hidden;"><div style="width:42%; height:100%; background:var(--muted);"></div></div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:var(--t-body); margin-bottom:12px;"><span>Club nights &amp; events</span><span style="font-family:'Space Mono',monospace; color:var(--muted);"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></span></div>
+            <div style="height:26px; background:var(--panel2); border-radius:3px; overflow:hidden;"><div style="width:34%; height:100%; background:var(--amber);"></div></div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:var(--t-body); margin-bottom:12px;"><span style="color:var(--red); font-weight:700;">Artists &amp; performances</span><span style="font-family:'Space Mono',monospace; color:var(--red);"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></span></div>
+            <div style="height:26px; background:var(--panel2); border-radius:3px; overflow:hidden;"><div style="width:14%; height:100%; background:var(--red);"></div></div>
+          </div>
+        </div>
+        <div style="font-size:var(--t-small); color:var(--dim); margin-top:36px; line-height:1.4;">The smallest slice is the only one nobody else can replicate.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= 03 · POSITIONING MAP ============================= -->
+<section data-label="Landscape" data-screen-label="03" data-speaker-notes="Where we sit. The London live-music-and-food landscape splits two ways: how music-led vs food-led a venue is, and how polished vs raw the experience feels. We own a rare spot — genuinely music-led but warm and accessible, not a stiff jazz institution or a sticky-floor dive. Setlist Selects pushes us further up-and-right: more credible on music, more intimate and authentic." style="background:var(--ink); color:var(--paper);">
+  <div style="height:100%; display:flex; flex-direction:column; padding:var(--pad) var(--pad) var(--padb); position:relative;">
+    <div style="display:flex; justify-content:space-between; align-items:center; font-family:'Space Mono',monospace; font-size:var(--t-small); letter-spacing:.14em; text-transform:uppercase; color:var(--dim);">
+      <span style="display:flex; align-items:center; gap:13px; color:var(--muted);"><span style="width:11px; height:11px; border-radius:50%; background:var(--red);"></span>The Landscape</span>
+      <span>Setlist Selects · 03</span>
+    </div>
+    <h2 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:var(--t-title); text-transform:uppercase; letter-spacing:-0.012em; margin-top:30px; line-height:1.02;">A spot nobody else owns</h2>
+    <div style="flex:1; display:flex; gap:64px; margin-top:30px;">
+      <div style="flex:none; width:1020px; position:relative; border:1px solid var(--line); border-radius:6px; background:var(--panel);">
+        <div style="position:absolute; left:0; right:0; top:50%; height:1px; background:var(--line);"></div>
+        <div style="position:absolute; top:0; bottom:0; left:50%; width:1px; background:var(--line);"></div>
+        <div style="position:absolute; top:18px; left:50%; transform:translateX(-50%); font-family:'Space Mono',monospace; font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--dim);">Music-led</div>
+        <div style="position:absolute; bottom:18px; left:50%; transform:translateX(-50%); font-family:'Space Mono',monospace; font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--dim);">Food / bar-led</div>
+        <div style="position:absolute; left:20px; top:50%; transform:translateY(-50%); font-family:'Space Mono',monospace; font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--dim);">Polished</div>
+        <div style="position:absolute; right:20px; top:50%; transform:translateY(-50%); font-family:'Space Mono',monospace; font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--dim);">Raw / DIY</div>
+        <div style="position:absolute; left:24%; top:20%; transform:translate(-50%,-50%); text-align:center;"><div style="width:18px;height:18px;border-radius:50%;background:var(--muted);margin:0 auto 8px;"></div><div style="font-size:18px; color:var(--muted); white-space:nowrap;">Ronnie Scott's</div></div>
+        <div style="position:absolute; left:38%; top:34%; transform:translate(-50%,-50%); text-align:center;"><div style="width:18px;height:18px;border-radius:50%;background:var(--muted);margin:0 auto 8px;"></div><div style="font-size:18px; color:var(--muted); white-space:nowrap;">Jazz Café</div></div>
+        <div style="position:absolute; left:30%; top:66%; transform:translate(-50%,-50%); text-align:center;"><div style="width:18px;height:18px;border-radius:50%;background:var(--muted);margin:0 auto 8px;"></div><div style="font-size:18px; color:var(--muted); white-space:nowrap;">Night Tales</div></div>
+        <div style="position:absolute; left:72%; top:30%; transform:translate(-50%,-50%); text-align:center;"><div style="width:18px;height:18px;border-radius:50%;background:var(--muted);margin:0 auto 8px;"></div><div style="font-size:18px; color:var(--muted); white-space:nowrap;">Camden Assembly</div></div>
+        <div style="position:absolute; left:80%; top:62%; transform:translate(-50%,-50%); text-align:center;"><div style="width:18px;height:18px;border-radius:50%;background:var(--muted);margin:0 auto 8px;"></div><div style="font-size:18px; color:var(--muted); white-space:nowrap;">Hootananny Brixton</div></div>
+        <div style="position:absolute; left:66%; top:78%; transform:translate(-50%,-50%); text-align:center;"><div style="width:18px;height:18px;border-radius:50%;background:var(--muted);margin:0 auto 8px;"></div><div style="font-size:18px; color:var(--muted); white-space:nowrap;">Ain't Nothin' But</div></div>
+        <div style="position:absolute; left:40%; top:40%; transform:translate(-50%,-50%); text-align:center; z-index:2;">
+          <div style="width:34px;height:34px;border-radius:50%;background:var(--red);margin:0 auto 10px;box-shadow:0 0 0 8px rgba(232,65,42,.22);"></div>
+          <div style="font-size:21px; color:var(--paper); font-weight:700; white-space:nowrap;">Blues Kitchen</div>
+        </div>
+        <div style="position:absolute; left:30%; top:30%; transform:translate(-50%,-50%); width:14px;height:14px;border-radius:50%;border:2px dashed var(--red); z-index:2;"></div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:32px;">
+        <div>
+          <div style="display:flex; align-items:center; gap:14px; margin-bottom:10px;"><span style="width:20px;height:20px;border-radius:50%;background:var(--red);"></span><span style="font-size:var(--t-body); font-weight:700;">Where we are</span></div>
+          <div style="font-size:var(--t-body); color:#cdc6ba; line-height:1.4;">Credibly music-led, but warm and unpretentious — and uniquely, food + bourbon + late club under one roof.</div>
+        </div>
+        <div>
+          <div style="display:flex; align-items:center; gap:14px; margin-bottom:10px;"><span style="width:18px;height:18px;border-radius:50%;border:2px dashed var(--red);"></span><span style="font-size:var(--t-body); font-weight:700;">Where Setlist Selects takes us</span></div>
+          <div style="font-size:var(--t-body); color:#cdc6ba; line-height:1.4;">More musical authority, more intimacy — the credibility of a Ronnie Scott's with the accessibility we already own.</div>
+        </div>
+        <div style="font-family:'Space Mono',monospace; font-size:var(--t-small); color:var(--dim); line-height:1.5; border-top:1px solid var(--line); padding-top:26px;">Competitors compete on rooms and line-ups. None tell the artists' stories. That lane is empty.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= 04 · SEGMENTATION ============================= -->
+<section data-label="Audience" data-screen-label="04" data-speaker-notes="Four segments we're really talking to. Shares here are indicative — validate against ticketing and CRM. The campaign over-indexes to the Scenester and the Loyalist, who do our sharing for us, while giving the Foodie and the Visitor a reason to discover us. Note the platform split: TikTok skews younger discovery, Instagram skews loyal locals." style="background:var(--ink); color:var(--paper);">
+  <div style="height:100%; display:flex; flex-direction:column; padding:var(--pad) var(--pad) var(--padb); position:relative;">
+    <div style="display:flex; justify-content:space-between; align-items:center; font-family:'Space Mono',monospace; font-size:var(--t-small); letter-spacing:.14em; text-transform:uppercase; color:var(--dim);">
+      <span style="display:flex; align-items:center; gap:13px; color:var(--muted);"><span style="width:11px; height:11px; border-radius:50%; background:var(--red);"></span>Who's Watching</span>
+      <span>Setlist Selects · 04</span>
+    </div>
+    <h2 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:var(--t-title); text-transform:uppercase; letter-spacing:-0.012em; margin-top:30px; line-height:1.02;">Four people we're talking to</h2>
+    <div style="flex:1; display:grid; grid-template-columns:repeat(4,1fr); gap:26px; margin-top:34px;">
+      <div style="background:var(--panel); border:1px solid var(--line); border-top:4px solid var(--red); border-radius:6px; padding:38px 32px; display:flex; flex-direction:column;">
+        <div style="font-family:'Anton',sans-serif; font-size:64px; color:var(--red); line-height:0.9;"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:30px; text-transform:uppercase; margin-top:18px; line-height:1.05;">The Loyalist</div>
+        <div style="font-size:21px; color:#cdc6ba; margin-top:16px; line-height:1.4; flex:1;">Local regulars who come for the room, not the line-up. Want to feel on the inside.</div>
+        <div style="font-family:'Space Mono',monospace; font-size:17px; color:var(--muted); margin-top:22px; letter-spacing:.08em; text-transform:uppercase;">IG · 35–55</div>
+      </div>
+      <div style="background:var(--panel); border:1px solid var(--line); border-top:4px solid var(--red); border-radius:6px; padding:38px 32px; display:flex; flex-direction:column;">
+        <div style="font-family:'Anton',sans-serif; font-size:64px; color:var(--red); line-height:0.9;"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:30px; text-transform:uppercase; margin-top:18px; line-height:1.05;">The Scenester</div>
+        <div style="font-size:21px; color:#cdc6ba; margin-top:16px; line-height:1.4; flex:1;">Tastemakers who share what they discover. Our organic reach engine.</div>
+        <div style="font-family:'Space Mono',monospace; font-size:17px; color:var(--muted); margin-top:22px; letter-spacing:.08em; text-transform:uppercase;">TikTok+IG · 21–34</div>
+      </div>
+      <div style="background:var(--panel); border:1px solid var(--line); border-top:4px solid var(--amber); border-radius:6px; padding:38px 32px; display:flex; flex-direction:column;">
+        <div style="font-family:'Anton',sans-serif; font-size:64px; color:var(--amber); line-height:0.9;"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:30px; text-transform:uppercase; margin-top:18px; line-height:1.05;">The Foodie</div>
+        <div style="font-size:21px; color:#cdc6ba; margin-top:16px; line-height:1.4; flex:1;">Date-night and group bookings. Come for BBQ &amp; bourbon, stay for the band.</div>
+        <div style="font-family:'Space Mono',monospace; font-size:17px; color:var(--muted); margin-top:22px; letter-spacing:.08em; text-transform:uppercase;">IG · 28–45</div>
+      </div>
+      <div style="background:var(--panel); border:1px solid var(--line); border-top:4px solid var(--amber); border-radius:6px; padding:38px 32px; display:flex; flex-direction:column;">
+        <div style="font-family:'Anton',sans-serif; font-size:64px; color:var(--amber); line-height:0.9;"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:30px; text-transform:uppercase; margin-top:18px; line-height:1.05;">The Visitor</div>
+        <div style="font-size:21px; color:#cdc6ba; margin-top:16px; line-height:1.4; flex:1;">Tourists &amp; out-of-towners planning a night out. Discover via search &amp; Reels.</div>
+        <div style="font-family:'Space Mono',monospace; font-size:17px; color:var(--muted); margin-top:22px; letter-spacing:.08em; text-transform:uppercase;">TikTok · 24–40</div>
+      </div>
+    </div>
+    <div style="font-family:'Space Mono',monospace; font-size:18px; color:var(--dim); margin-top:24px; letter-spacing:.06em;">[ Audience segments — shares redacted for confidentiality ]</div>
+  </div>
+</section>
+
+<!-- ============================= 05 · SOCIAL SNAPSHOT ============================= -->
+<section data-label="Social Snapshot" data-screen-label="05" data-speaker-notes="Where we stand on social today. The specific figures here are redacted for confidentiality in this portfolio version. The story we expect the data to tell: a healthy, sizeable Instagram, a TikTok that's smaller but climbing faster, and an engagement rate with room to grow. Specifics withheld in this portfolio version." style="background:var(--ink); color:var(--paper);">
+  <div style="height:100%; display:flex; flex-direction:column; padding:var(--pad) var(--pad) var(--padb); position:relative;">
+    <div style="display:flex; justify-content:space-between; align-items:center; font-family:'Space Mono',monospace; font-size:var(--t-small); letter-spacing:.14em; text-transform:uppercase; color:var(--dim);">
+      <span style="display:flex; align-items:center; gap:13px; color:var(--muted);"><span style="width:11px; height:11px; border-radius:50%; background:var(--red);"></span>Social Snapshot</span>
+      <span>Setlist Selects · 05</span>
+    </div>
+    <h2 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:var(--t-title); text-transform:uppercase; letter-spacing:-0.012em; margin-top:30px; line-height:1.02;">Where we stand today</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:22px; margin-top:36px;">
+      <div style="background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:30px 32px;">
+        <div style="font-family:'Space Mono',monospace; font-size:17px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);">IG followers</div>
+        <div style="font-family:'Anton',sans-serif; font-size:78px; color:var(--paper); line-height:1; margin-top:10px;"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></div>
+      </div>
+      <div style="background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:30px 32px;">
+        <div style="font-family:'Space Mono',monospace; font-size:17px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);">TikTok followers</div>
+        <div style="font-family:'Anton',sans-serif; font-size:78px; color:var(--paper); line-height:1; margin-top:10px;"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></div>
+      </div>
+      <div style="background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:30px 32px;">
+        <div style="font-family:'Space Mono',monospace; font-size:17px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);">Avg. engagement rate</div>
+        <div style="font-family:'Anton',sans-serif; font-size:78px; color:var(--red); line-height:1; margin-top:10px;"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></div>
+      </div>
+      <div style="background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:30px 32px;">
+        <div style="font-family:'Space Mono',monospace; font-size:17px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);">TikTok likes (total)</div>
+        <div style="font-family:'Anton',sans-serif; font-size:78px; color:var(--paper); line-height:1; margin-top:10px;"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></div>
+      </div>
+    </div>
+    <div style="flex:1; display:flex; gap:50px; margin-top:40px;">
+      <div style="flex:1; background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:36px 44px; display:flex; flex-direction:column;">
+        <div style="font-family:'Space Mono',monospace; font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:30px;">Audience by platform · redacted</div>
+        <div style="flex:1; display:flex; align-items:flex-end; gap:54px; padding-bottom:10px;">
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;"><div style="font-family:'Space Mono',monospace; font-size:18px; color:var(--paper); margin-bottom:10px;"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></div><div style="width:100%; height:300px; background:var(--red); border-radius:3px 3px 0 0;"></div><div style="font-size:20px; color:var(--muted); margin-top:14px;">Instagram</div></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;"><div style="font-family:'Space Mono',monospace; font-size:18px; color:var(--paper); margin-bottom:10px;"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></div><div style="width:100%; height:98px; background:var(--amber); border-radius:3px 3px 0 0;"></div><div style="font-size:20px; color:var(--muted); margin-top:14px;">TikTok</div></div>
+        </div>
+      </div>
+      <div style="flex:1; background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:36px 44px; display:flex; flex-direction:column;">
+        <div style="font-family:'Space Mono',monospace; font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:30px;">Follower growth · redacted</div>
+        <div style="flex:1; display:flex; align-items:flex-end; gap:14px; padding-bottom:10px;">
+          <div style="flex:1; height:30%; background:var(--panel2); border-radius:3px 3px 0 0;"></div><div style="flex:1; height:38%; background:var(--panel2); border-radius:3px 3px 0 0;"></div><div style="flex:1; height:34%; background:var(--panel2); border-radius:3px 3px 0 0;"></div><div style="flex:1; height:46%; background:var(--panel2); border-radius:3px 3px 0 0;"></div><div style="flex:1; height:52%; background:var(--panel2); border-radius:3px 3px 0 0;"></div><div style="flex:1; height:48%; background:var(--panel2); border-radius:3px 3px 0 0;"></div><div style="flex:1; height:60%; background:var(--amber); border-radius:3px 3px 0 0;"></div><div style="flex:1; height:66%; background:var(--amber); border-radius:3px 3px 0 0;"></div><div style="flex:1; height:72%; background:var(--red); border-radius:3px 3px 0 0;"></div><div style="flex:1; height:80%; background:var(--red); border-radius:3px 3px 0 0;"></div><div style="flex:1; height:88%; background:var(--red); border-radius:3px 3px 0 0;"></div><div style="flex:1; height:96%; background:var(--red); border-radius:3px 3px 0 0;"></div>
+        </div>
+        <div style="font-size:17px; color:var(--dim); margin-top:14px; font-family:'Space Mono',monospace;">Figures redacted for confidentiality</div>
+      </div>
+    </div>
+    <div style="font-family:'Space Mono',monospace; font-size:16px; color:var(--dim); margin-top:20px; letter-spacing:.04em; line-height:1.4;">Concept deck for portfolio · all performance figures redacted for confidentiality · chart proportions illustrative</div>
+  </div>
+</section>
+
+<!-- ============================= 06 · ENGAGEMENT GAP ============================= -->
+<section data-label="Engagement Gap" data-screen-label="06" data-speaker-notes="The number that matters most. Likes are vanity; saves, shares and comments are what the algorithm rewards and what signals real interest. Story-led content historically over-indexes on exactly those deeper actions. The grouped bars compare likes against total engagement by content type — interview content is where the gap between the two is widest, and that's the unlock." style="background:var(--ink); color:var(--paper);">
+  <div style="height:100%; display:flex; flex-direction:column; padding:var(--pad) var(--pad) var(--padb); position:relative;">
+    <div style="display:flex; justify-content:space-between; align-items:center; font-family:'Space Mono',monospace; font-size:var(--t-small); letter-spacing:.14em; text-transform:uppercase; color:var(--dim);">
+      <span style="display:flex; align-items:center; gap:13px; color:var(--muted);"><span style="width:11px; height:11px; border-radius:50%; background:var(--red);"></span>The Engagement Gap</span>
+      <span>Setlist Selects · 06</span>
+    </div>
+    <h2 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:var(--t-title); text-transform:uppercase; letter-spacing:-0.012em; margin-top:30px; line-height:1.02;">Likes are not the win</h2>
+    <div style="flex:1; display:flex; gap:60px; margin-top:32px;">
+      <div style="flex:none; width:1080px; background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:40px 48px; display:flex; flex-direction:column;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+          <div style="font-family:'Space Mono',monospace; font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);">Likes vs. total engagement by content type</div>
+          <div style="display:flex; gap:24px; font-size:18px;"><span style="display:flex; align-items:center; gap:9px;"><span style="width:15px; height:15px; background:var(--muted); border-radius:2px;"></span>Likes</span><span style="display:flex; align-items:center; gap:9px;"><span style="width:15px; height:15px; background:var(--red); border-radius:2px;"></span>Saves + shares + comments</span></div>
+        </div>
+        <div style="flex:1; display:flex; align-items:flex-end; gap:50px; padding-bottom:8px;">
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
+            <div style="width:100%; display:flex; align-items:flex-end; justify-content:center; gap:12px; height:380px;"><div style="width:38%; height:55%; background:var(--muted); border-radius:3px 3px 0 0;"></div><div style="width:38%; height:22%; background:var(--red); border-radius:3px 3px 0 0;"></div></div>
+            <div style="font-size:19px; color:var(--muted); margin-top:16px; text-align:center;">Food &amp; drink</div>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
+            <div style="width:100%; display:flex; align-items:flex-end; justify-content:center; gap:12px; height:380px;"><div style="width:38%; height:62%; background:var(--muted); border-radius:3px 3px 0 0;"></div><div style="width:38%; height:34%; background:var(--red); border-radius:3px 3px 0 0;"></div></div>
+            <div style="font-size:19px; color:var(--muted); margin-top:16px; text-align:center;">Club nights</div>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
+            <div style="width:100%; display:flex; align-items:flex-end; justify-content:center; gap:12px; height:380px;"><div style="width:38%; height:70%; background:var(--muted); border-radius:3px 3px 0 0;"></div><div style="width:38%; height:48%; background:var(--red); border-radius:3px 3px 0 0;"></div></div>
+            <div style="font-size:19px; color:var(--muted); margin-top:16px; text-align:center;">Live clips</div>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; position:relative;">
+            <div style="position:absolute; top:-6px; font-family:'Space Mono',monospace; font-size:16px; color:var(--red); letter-spacing:.06em;">widest gap →</div>
+            <div style="width:100%; display:flex; align-items:flex-end; justify-content:center; gap:12px; height:380px;"><div style="width:38%; height:78%; background:var(--muted); border-radius:3px 3px 0 0;"></div><div style="width:38%; height:92%; background:var(--red); border-radius:3px 3px 0 0; box-shadow:0 0 0 3px rgba(232,65,42,.25);"></div></div>
+            <div style="font-size:19px; color:var(--paper); margin-top:16px; text-align:center; font-weight:700;">Artist stories</div>
+          </div>
+        </div>
+        <div style="font-size:16px; color:var(--dim); margin-top:14px; font-family:'Space Mono',monospace;">Illustrative — figures redacted for confidentiality</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:30px;">
+        <div style="font-size:var(--t-sub); font-weight:700; line-height:1.2;">Story content earns the actions the algorithm actually rewards.</div>
+        <div style="font-size:var(--t-body); color:#cdc6ba; line-height:1.42;">A like is a reflex. A <strong style="color:var(--paper);">save</strong> is intent to return; a <strong style="color:var(--paper);">share</strong> is free reach; a <strong style="color:var(--paper);">comment</strong> is a conversation. Interview content drives all three.</div>
+        <div style="border-top:1px solid var(--line); padding-top:26px; font-family:'Space Mono',monospace; font-size:var(--t-small); color:var(--red); line-height:1.5;">Target metric for this campaign: saves + shares per 1k views — not likes.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= 07 · THE IDEA (RED FEATURE) ============================= -->
+<section data-label="The Idea" data-screen-label="07" data-speaker-notes="Here's the campaign. Setlist Selects is a recurring short-form series — one resident performer, one tight interview, built on three beats: the Roots they came from, the Record that shaped them, and the Ritual before they hit our stage. Same three beats every episode, so the format is instantly recognisable and endlessly repeatable across every band on our roster." style="background:var(--red); color:#1a0c08;">
+  <div style="height:100%; display:flex; flex-direction:column; padding:var(--pad) var(--pad) var(--padb); position:relative;">
+    <div style="display:flex; justify-content:space-between; align-items:center; font-family:'Space Mono',monospace; font-size:var(--t-small); letter-spacing:.14em; text-transform:uppercase; color:rgba(26,12,8,.65);">
+      <span style="display:flex; align-items:center; gap:13px; color:#1a0c08;"><span style="width:11px; height:11px; border-radius:50%; background:#1a0c08;"></span>The Idea</span>
+      <span>Setlist Selects · 07</span>
+    </div>
+    <div style="margin-top:30px;">
+      <h2 style="font-family:'Anton',sans-serif; font-weight:400; font-size:104px; text-transform:uppercase; letter-spacing:-0.01em; line-height:0.92;">One artist. One story.<br>Three beats.</h2>
+      <div style="font-size:var(--t-sub); font-weight:600; max-width:1180px; margin-top:26px; line-height:1.32; color:#3a160d;">A recurring vertical series profiling the residents who play our rooms — the same recognisable shape, every episode, infinitely repeatable across the roster.</div>
+    </div>
+    <div style="flex:1; display:grid; grid-template-columns:repeat(3,1fr); gap:30px; margin-top:46px;">
+      <div style="background:#1a0c08; color:var(--paper); border-radius:8px; padding:46px 44px; display:flex; flex-direction:column;">
+        <div style="font-family:'Anton',sans-serif; font-size:58px; color:var(--red); line-height:1;">01</div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:42px; text-transform:uppercase; margin-top:20px;">The Roots</div>
+        <div style="font-size:24px; color:#cdc6ba; margin-top:18px; line-height:1.42; flex:1;">Where they're from and how they found this music. The human origin story.</div>
+      </div>
+      <div style="background:#1a0c08; color:var(--paper); border-radius:8px; padding:46px 44px; display:flex; flex-direction:column;">
+        <div style="font-family:'Anton',sans-serif; font-size:58px; color:var(--red); line-height:1;">02</div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:42px; text-transform:uppercase; margin-top:20px;">The Record</div>
+        <div style="font-size:24px; color:#cdc6ba; margin-top:18px; line-height:1.42; flex:1;">The one track that changed everything for them — played, hummed, or spun on the night.</div>
+      </div>
+      <div style="background:#1a0c08; color:var(--paper); border-radius:8px; padding:46px 44px; display:flex; flex-direction:column;">
+        <div style="font-family:'Anton',sans-serif; font-size:58px; color:var(--red); line-height:1;">03</div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:42px; text-transform:uppercase; margin-top:20px;">The Ritual</div>
+        <div style="font-size:24px; color:#cdc6ba; margin-top:18px; line-height:1.42; flex:1;">What they do in the green room before they walk on. The intimate, unseen moment.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= 08 · STORYBOARD ============================= -->
+<section data-label="Storyboard" data-screen-label="08" data-speaker-notes="How we actually shoot it. Vertical 9:16, phone-first. Five beats: a three-second hook that stops the scroll, a name-and-credit lower-third, the story told to camera, a performance cutaway with real venue sound, and a close that tells viewers where to catch them live. Captions burned in for silent autoplay. One shoot per artist yields a hero Reel plus three or four cut-downs." style="background:var(--ink); color:var(--paper);">
+  <div style="height:100%; display:flex; flex-direction:column; padding:var(--pad) var(--pad) var(--padb); position:relative;">
+    <div style="display:flex; justify-content:space-between; align-items:center; font-family:'Space Mono',monospace; font-size:var(--t-small); letter-spacing:.14em; text-transform:uppercase; color:var(--dim);">
+      <span style="display:flex; align-items:center; gap:13px; color:var(--muted);"><span style="width:11px; height:11px; border-radius:50%; background:var(--red);"></span>The Shot · 9:16 Vertical</span>
+      <span>Setlist Selects · 08</span>
+    </div>
+    <h2 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:var(--t-title); text-transform:uppercase; letter-spacing:-0.012em; margin-top:30px; line-height:1.02;">How one episode is built</h2>
+    <div style="flex:1; display:flex; gap:30px; margin-top:34px; align-items:stretch;">
+      <div style="flex:1; display:flex; flex-direction:column;">
+        <div style="flex:1; border-radius:14px; border:1px solid var(--line); background:repeating-linear-gradient(135deg,#1c1814 0 2px,transparent 2px 15px),#15120f; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; padding:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-family:'Space Mono',monospace; font-size:15px; color:var(--red); letter-spacing:.08em;">0–3s</span><span style="font-family:'Space Mono',monospace; font-size:14px; color:var(--dim);">HOOK</span></div>
+          <div style="text-align:center;"><div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:30px; line-height:1.05; text-transform:uppercase; color:var(--paper); text-shadow:0 2px 12px rgba(0,0,0,.6);">"I learned to sing in my nan's kitchen"</div></div>
+          <div style="font-family:'Space Mono',monospace; font-size:14px; color:var(--dim); text-align:center;">[ artist portrait ]</div>
+        </div>
+        <div style="margin-top:18px;"><div style="font-family:'Archivo',sans-serif; font-weight:700; font-size:21px;">Cold-open hook</div><div style="font-size:18px; color:var(--muted); margin-top:6px; line-height:1.35;">Scroll-stopping line, big caption, no intro.</div></div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column;">
+        <div style="flex:1; border-radius:14px; border:1px solid var(--line); background:repeating-linear-gradient(135deg,#1c1814 0 2px,transparent 2px 15px),#15120f; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; padding:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-family:'Space Mono',monospace; font-size:15px; color:var(--red); letter-spacing:.08em;">3–6s</span><span style="font-family:'Space Mono',monospace; font-size:14px; color:var(--dim);">CREDIT</span></div>
+          <div style="font-family:'Space Mono',monospace; font-size:14px; color:var(--dim); text-align:center;">[ artist portrait ]</div>
+          <div style="background:var(--red); color:#1a0c08; padding:12px 16px; border-radius:6px;"><div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:22px; text-transform:uppercase; line-height:1;">Acantha Lang</div><div style="font-family:'Space Mono',monospace; font-size:14px; margin-top:4px;">Resident · Shoreditch</div></div>
+        </div>
+        <div style="margin-top:18px;"><div style="font-family:'Archivo',sans-serif; font-weight:700; font-size:21px;">Name &amp; lower-third</div><div style="font-size:18px; color:var(--muted); margin-top:6px; line-height:1.35;">Who, where they play, what they do.</div></div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column;">
+        <div style="flex:1; border-radius:14px; border:1px solid var(--line); background:repeating-linear-gradient(135deg,#1c1814 0 2px,transparent 2px 15px),#15120f; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; padding:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-family:'Space Mono',monospace; font-size:15px; color:var(--red); letter-spacing:.08em;">6–35s</span><span style="font-family:'Space Mono',monospace; font-size:14px; color:var(--dim);">STORY</span></div>
+          <div style="font-family:'Space Mono',monospace; font-size:14px; color:var(--dim); text-align:center;">[ interview to camera ]</div>
+          <div style="background:rgba(14,13,12,.7); backdrop-filter:blur(2px); padding:10px 14px; border-radius:6px;"><div style="font-size:17px; color:var(--paper); line-height:1.3;">Burned-in captions track every word</div></div>
+        </div>
+        <div style="margin-top:18px;"><div style="font-family:'Archivo',sans-serif; font-weight:700; font-size:21px;">The story</div><div style="font-size:18px; color:var(--muted); margin-top:6px; line-height:1.35;">Roots → Record → Ritual, tightly cut.</div></div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column;">
+        <div style="flex:1; border-radius:14px; border:1px solid var(--line); background:repeating-linear-gradient(135deg,#241a10 0 2px,transparent 2px 15px),#1a1208; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; padding:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-family:'Space Mono',monospace; font-size:15px; color:var(--amber); letter-spacing:.08em;">35–50s</span><span style="font-family:'Space Mono',monospace; font-size:14px; color:var(--dim);">PERFORM</span></div>
+          <div style="text-align:center;"><div style="display:inline-flex; align-items:flex-end; gap:5px; height:50px;"><div style="width:7px;background:var(--amber);height:50%;"></div><div style="width:7px;background:var(--amber);height:90%;"></div><div style="width:7px;background:var(--amber);height:65%;"></div><div style="width:7px;background:var(--amber);height:100%;"></div><div style="width:7px;background:var(--amber);height:45%;"></div></div></div>
+          <div style="font-family:'Space Mono',monospace; font-size:14px; color:var(--dim); text-align:center;">[ live cutaway · real sound ]</div>
+        </div>
+        <div style="margin-top:18px;"><div style="font-family:'Archivo',sans-serif; font-weight:700; font-size:21px;">Performance cutaway</div><div style="font-size:18px; color:var(--muted); margin-top:6px; line-height:1.35;">Pays off the story with the live moment.</div></div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column;">
+        <div style="flex:1; border-radius:14px; border:1px solid var(--line); background:#15120f; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; padding:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-family:'Space Mono',monospace; font-size:15px; color:var(--red); letter-spacing:.08em;">50–60s</span><span style="font-family:'Space Mono',monospace; font-size:14px; color:var(--dim);">CTA</span></div>
+          <div style="text-align:center;"><div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:26px; text-transform:uppercase; line-height:1.05;">See her live<br>this month</div><div style="font-family:'Space Mono',monospace; font-size:15px; color:var(--red); margin-top:14px;">@theblueskitchen</div></div>
+          <div style="border:2px solid var(--red); border-radius:8px; padding:11px; text-align:center; font-family:'Archivo',sans-serif; font-weight:700; font-size:18px; color:var(--red);">Tickets in bio</div>
+        </div>
+        <div style="margin-top:18px;"><div style="font-family:'Archivo',sans-serif; font-weight:700; font-size:21px;">Close &amp; CTA</div><div style="font-size:18px; color:var(--muted); margin-top:6px; line-height:1.35;">Drive to the next gig &amp; the follow.</div></div>
+      </div>
+    </div>
+    <div style="font-family:'Space Mono',monospace; font-size:18px; color:var(--dim); margin-top:24px; letter-spacing:.05em;">One shoot → 1 hero Reel + 3–4 cut-downs · captioned for silent autoplay · cross-posted IG Reels + TikTok</div>
+  </div>
+</section>
+
+<!-- ============================= 09 · SWOT ============================= -->
+<section data-label="SWOT" data-screen-label="09" data-speaker-notes="The honest read. Strengths: a deep roster, four rooms, real heritage and an existing long-form interview format to build on. Weaknesses: thin artist content, four venues diluting one voice, production capacity. Opportunities: short-form's appetite for authenticity, TikTok discovery, artist cross-promotion. Threats: platform reach volatility and competitors waking up to the same idea." style="background:var(--ink); color:var(--paper);">
+  <div style="height:100%; display:flex; flex-direction:column; padding:var(--pad) var(--pad) var(--padb); position:relative;">
+    <div style="display:flex; justify-content:space-between; align-items:center; font-family:'Space Mono',monospace; font-size:var(--t-small); letter-spacing:.14em; text-transform:uppercase; color:var(--dim);">
+      <span style="display:flex; align-items:center; gap:13px; color:var(--muted);"><span style="width:11px; height:11px; border-radius:50%; background:var(--red);"></span>Market Analysis · SWOT</span>
+      <span>Setlist Selects · 09</span>
+    </div>
+    <h2 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:var(--t-title); text-transform:uppercase; letter-spacing:-0.012em; margin-top:30px; line-height:1.02;">The honest read</h2>
+    <div style="flex:1; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:26px; margin-top:34px;">
+      <div style="background:var(--panel); border:1px solid var(--line); border-left:5px solid var(--red); border-radius:6px; padding:34px 40px;">
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:30px; text-transform:uppercase; color:var(--red); margin-bottom:18px;">Strengths</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:13px; font-size:23px; color:#cdc6ba; line-height:1.3;">
+          <li style="display:flex; gap:12px;"><span style="color:var(--red);">—</span>Deep roster of resident artists across 4 venues</li>
+          <li style="display:flex; gap:12px;"><span style="color:var(--red);">—</span>15+ years of genuine live-music heritage</li>
+          <li style="display:flex; gap:12px;"><span style="color:var(--red);">—</span>Existing YouTube/Spotify interview format to extend</li>
+          <li style="display:flex; gap:12px;"><span style="color:var(--red);">—</span>In-house stages = zero-cost shoot locations</li>
+        </ul>
+      </div>
+      <div style="background:var(--panel); border:1px solid var(--line); border-left:5px solid var(--muted); border-radius:6px; padding:34px 40px;">
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:30px; text-transform:uppercase; color:var(--muted); margin-bottom:18px;">Weaknesses</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:13px; font-size:23px; color:#cdc6ba; line-height:1.3;">
+          <li style="display:flex; gap:12px;"><span style="color:var(--muted);">—</span>Artist-led content currently minimal</li>
+          <li style="display:flex; gap:12px;"><span style="color:var(--muted);">—</span>Four venues can dilute a single brand voice</li>
+          <li style="display:flex; gap:12px;"><span style="color:var(--muted);">—</span>Short-form production capacity unproven</li>
+          <li style="display:flex; gap:12px;"><span style="color:var(--muted);">—</span>TikTok presence under-developed vs IG</li>
+        </ul>
+      </div>
+      <div style="background:var(--panel); border:1px solid var(--line); border-left:5px solid var(--red); border-radius:6px; padding:34px 40px;">
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:30px; text-transform:uppercase; color:var(--red); margin-bottom:18px;">Opportunities</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:13px; font-size:23px; color:#cdc6ba; line-height:1.3;">
+          <li style="display:flex; gap:12px;"><span style="color:var(--red);">—</span>Short-form rewards authentic, human stories</li>
+          <li style="display:flex; gap:12px;"><span style="color:var(--red);">—</span>Artists re-share to their own followings</li>
+          <li style="display:flex; gap:12px;"><span style="color:var(--red);">—</span>TikTok search &amp; discovery for new audiences</li>
+          <li style="display:flex; gap:12px;"><span style="color:var(--red);">—</span>Repurpose into a wider content ecosystem</li>
+        </ul>
+      </div>
+      <div style="background:var(--panel); border:1px solid var(--line); border-left:5px solid var(--muted); border-radius:6px; padding:34px 40px;">
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:30px; text-transform:uppercase; color:var(--muted); margin-bottom:18px;">Threats</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:13px; font-size:23px; color:#cdc6ba; line-height:1.3;">
+          <li style="display:flex; gap:12px;"><span style="color:var(--muted);">—</span>Platform reach &amp; algorithm volatility</li>
+          <li style="display:flex; gap:12px;"><span style="color:var(--muted);">—</span>Competitors adopting the same playbook</li>
+          <li style="display:flex; gap:12px;"><span style="color:var(--muted);">—</span>Rising cost pressure on nights out</li>
+          <li style="display:flex; gap:12px;"><span style="color:var(--muted);">—</span>Artist availability &amp; rights clearance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= 10 · PEST ============================= -->
+<section data-label="PEST" data-screen-label="10" data-speaker-notes="The wider forces. Political and regulatory pressure on late-night licensing and grassroots venues. Economic squeeze on discretionary spend means every night out has to earn its place. Socially, audiences crave authenticity and back independent culture. Technologically, vertical video and in-platform discovery have never favoured exactly this kind of content more. Three of the four currents run in our favour." style="background:var(--ink); color:var(--paper);">
+  <div style="height:100%; display:flex; flex-direction:column; padding:var(--pad) var(--pad) var(--padb); position:relative;">
+    <div style="display:flex; justify-content:space-between; align-items:center; font-family:'Space Mono',monospace; font-size:var(--t-small); letter-spacing:.14em; text-transform:uppercase; color:var(--dim);">
+      <span style="display:flex; align-items:center; gap:13px; color:var(--muted);"><span style="width:11px; height:11px; border-radius:50%; background:var(--red);"></span>Market Analysis · PEST</span>
+      <span>Setlist Selects · 10</span>
+    </div>
+    <h2 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:var(--t-title); text-transform:uppercase; letter-spacing:-0.012em; margin-top:30px; line-height:1.02;">The currents around us</h2>
+    <div style="flex:1; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:34px;">
+      <div style="background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:38px 32px; display:flex; flex-direction:column;">
+        <div style="font-family:'Anton',sans-serif; font-size:62px; color:var(--dim); line-height:1;">P</div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:25px; text-transform:uppercase; margin-top:10px; color:var(--paper);">Political</div>
+        <div style="font-size:21px; color:#cdc6ba; margin-top:20px; line-height:1.4; flex:1;">Late-night licensing scrutiny; growing policy support for protecting grassroots music venues.</div>
+        <div style="font-family:'Space Mono',monospace; font-size:16px; color:var(--dim); margin-top:20px; letter-spacing:.06em;">NEUTRAL</div>
+      </div>
+      <div style="background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:38px 32px; display:flex; flex-direction:column;">
+        <div style="font-family:'Anton',sans-serif; font-size:62px; color:var(--dim); line-height:1;">E</div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:25px; text-transform:uppercase; margin-top:10px; color:var(--paper);">Economic</div>
+        <div style="font-size:21px; color:#cdc6ba; margin-top:20px; line-height:1.4; flex:1;">Squeezed discretionary spend — every night out must justify itself. Free content lowers the barrier to choose us.</div>
+        <div style="font-family:'Space Mono',monospace; font-size:16px; color:var(--amber); margin-top:20px; letter-spacing:.06em;">HEADWIND</div>
+      </div>
+      <div style="background:var(--panel); border:1px solid var(--line); border-top:4px solid var(--red); border-radius:6px; padding:38px 32px; display:flex; flex-direction:column;">
+        <div style="font-family:'Anton',sans-serif; font-size:62px; color:var(--red); line-height:1;">S</div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:25px; text-transform:uppercase; margin-top:10px; color:var(--paper);">Social</div>
+        <div style="font-size:21px; color:#cdc6ba; margin-top:20px; line-height:1.4; flex:1;">Audiences reward authenticity and back independent culture. Artist stories are exactly this currency.</div>
+        <div style="font-family:'Space Mono',monospace; font-size:16px; color:var(--red); margin-top:20px; letter-spacing:.06em;">TAILWIND</div>
+      </div>
+      <div style="background:var(--panel); border:1px solid var(--line); border-top:4px solid var(--red); border-radius:6px; padding:38px 32px; display:flex; flex-direction:column;">
+        <div style="font-family:'Anton',sans-serif; font-size:62px; color:var(--red); line-height:1;">T</div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:25px; text-transform:uppercase; margin-top:10px; color:var(--paper);">Technological</div>
+        <div style="font-size:21px; color:#cdc6ba; margin-top:20px; line-height:1.4; flex:1;">Vertical video &amp; in-app discovery favour short, human, story-led clips more than ever before.</div>
+        <div style="font-family:'Space Mono',monospace; font-size:16px; color:var(--red); margin-top:20px; letter-spacing:.06em;">TAILWIND</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= 11 · GROWTH CASE ============================= -->
+<section data-label="Growth Case" data-screen-label="11" data-speaker-notes="How content becomes covers. The funnel: vertical reach turns into profile visits, visits into follows, follows into our email and ticketing list, and that list into actual footfall and bookings. Conversion percentages are targets to set with the team. This isn't brand fluff — it's a measurable acquisition channel feeding the one number that pays the bills, bums on seats." style="background:var(--ink); color:var(--paper);">
+  <div style="height:100%; display:flex; flex-direction:column; padding:var(--pad) var(--pad) var(--padb); position:relative;">
+    <div style="display:flex; justify-content:space-between; align-items:center; font-family:'Space Mono',monospace; font-size:var(--t-small); letter-spacing:.14em; text-transform:uppercase; color:var(--dim);">
+      <span style="display:flex; align-items:center; gap:13px; color:var(--muted);"><span style="width:11px; height:11px; border-radius:50%; background:var(--red);"></span>The Growth Case</span>
+      <span>Setlist Selects · 11</span>
+    </div>
+    <h2 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:var(--t-title); text-transform:uppercase; letter-spacing:-0.012em; margin-top:30px; line-height:1.02;">From scroll to seat</h2>
+    <div style="flex:1; display:flex; gap:50px; margin-top:34px; align-items:center;">
+      <div style="flex:none; width:1120px; display:flex; flex-direction:column; gap:14px;">
+        <div style="height:96px; width:100%; background:var(--red); border-radius:5px; display:flex; align-items:center; justify-content:space-between; padding:0 44px; color:#1a0c08;"><span style="font-family:'Archivo',sans-serif; font-weight:800; font-size:30px; text-transform:uppercase;">Vertical reach</span><span style="font-family:'Space Mono',monospace; font-size:22px;"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></span></div>
+        <div style="height:96px; width:84%; margin:0 auto; background:#c0381f; border-radius:5px; display:flex; align-items:center; justify-content:space-between; padding:0 44px; color:#1a0c08;"><span style="font-family:'Archivo',sans-serif; font-weight:800; font-size:30px; text-transform:uppercase;">Profile visits</span><span style="font-family:'Space Mono',monospace; font-size:22px;"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></span></div>
+        <div style="height:96px; width:68%; margin:0 auto; background:var(--amber); border-radius:5px; display:flex; align-items:center; justify-content:space-between; padding:0 44px; color:#1a0c08;"><span style="font-family:'Archivo',sans-serif; font-weight:800; font-size:30px; text-transform:uppercase;">New follows</span><span style="font-family:'Space Mono',monospace; font-size:22px;"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></span></div>
+        <div style="height:96px; width:52%; margin:0 auto; background:#bb8a2e; border-radius:5px; display:flex; align-items:center; justify-content:space-between; padding:0 44px; color:#1a0c08;"><span style="font-family:'Archivo',sans-serif; font-weight:800; font-size:27px; text-transform:uppercase;">Email / ticket list</span><span style="font-family:'Space Mono',monospace; font-size:20px;"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></span></div>
+        <div style="height:96px; width:36%; margin:0 auto; background:var(--paper); border-radius:5px; display:flex; align-items:center; justify-content:center; gap:18px; color:#1a0c08;"><span style="font-family:'Archivo',sans-serif; font-weight:800; font-size:26px; text-transform:uppercase;">Footfall &amp; covers</span></div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:26px;">
+        <div style="font-size:var(--t-body); color:#cdc6ba; line-height:1.4;">Every episode is an <strong style="color:var(--paper);">acquisition asset</strong>, not just a brand post — measurable from first view to booked table.</div>
+        <div style="display:flex; flex-direction:column; gap:18px;">
+          <div style="background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:24px 30px;"><div style="font-family:'Space Mono',monospace; font-size:17px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted);">6-mo follower lift</div><div style="font-family:'Anton',sans-serif; font-size:54px; color:var(--red); line-height:1; margin-top:6px;"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></div></div>
+          <div style="background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:24px 30px;"><div style="font-family:'Space Mono',monospace; font-size:17px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted);">Saves + shares / 1k views</div><div style="font-family:'Anton',sans-serif; font-size:54px; color:var(--red); line-height:1; margin-top:6px;"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></div></div>
+          <div style="background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:24px 30px;"><div style="font-family:'Space Mono',monospace; font-size:17px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted);">Attributable bookings / mo</div><div style="font-family:'Anton',sans-serif; font-size:54px; color:var(--red); line-height:1; margin-top:6px;"><span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= 12 · ROLLOUT, BUDGET & ASK ============================= -->
+<section data-label="Rollout & Ask" data-screen-label="12" data-speaker-notes="The ask. Three phases: a low-risk pilot of three episodes at one venue, a full launch as a fortnightly series across all four, then scale with paid amplification and guest artists once the format proves out. Indicative budget split is mostly production with a paid layer. What I need today is a green light on the three-episode pilot — pick a venue and an artist and we shoot within the month." style="background:var(--ink); color:var(--paper);">
+  <div style="height:100%; display:flex; flex-direction:column; padding:var(--pad) var(--pad) var(--padb); position:relative;">
+    <div style="display:flex; justify-content:space-between; align-items:center; font-family:'Space Mono',monospace; font-size:var(--t-small); letter-spacing:.14em; text-transform:uppercase; color:var(--dim);">
+      <span style="display:flex; align-items:center; gap:13px; color:var(--muted);"><span style="width:11px; height:11px; border-radius:50%; background:var(--red);"></span>Rollout, Budget &amp; The Ask</span>
+      <span>Setlist Selects · 12</span>
+    </div>
+    <h2 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:var(--t-title); text-transform:uppercase; letter-spacing:-0.012em; margin-top:30px; line-height:1.02;">Let's roll tape</h2>
+    <div style="display:flex; gap:24px; margin-top:36px;">
+      <div style="flex:1; background:var(--panel); border:1px solid var(--line); border-top:4px solid var(--red); border-radius:6px; padding:30px 34px;">
+        <div style="font-family:'Space Mono',monospace; font-size:17px; letter-spacing:.1em; text-transform:uppercase; color:var(--red);">Phase 1 · Weeks 1–4</div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:30px; text-transform:uppercase; margin-top:10px;">Pilot</div>
+        <div style="font-size:21px; color:#cdc6ba; margin-top:12px; line-height:1.38;">3 episodes, 1 venue, 1 weekend shoot. Prove the format &amp; the numbers.</div>
+      </div>
+      <div style="flex:1; background:var(--panel); border:1px solid var(--line); border-top:4px solid var(--amber); border-radius:6px; padding:30px 34px;">
+        <div style="font-family:'Space Mono',monospace; font-size:17px; letter-spacing:.1em; text-transform:uppercase; color:var(--amber);">Phase 2 · Months 2–4</div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:30px; text-transform:uppercase; margin-top:10px;">Launch</div>
+        <div style="font-size:21px; color:#cdc6ba; margin-top:12px; line-height:1.38;">Fortnightly series rolled across all four venues. Build the rhythm.</div>
+      </div>
+      <div style="flex:1; background:var(--panel); border:1px solid var(--line); border-top:4px solid var(--muted); border-radius:6px; padding:30px 34px;">
+        <div style="font-family:'Space Mono',monospace; font-size:17px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);">Phase 3 · Months 5–6+</div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:30px; text-transform:uppercase; margin-top:10px;">Scale</div>
+        <div style="font-size:21px; color:#cdc6ba; margin-top:12px; line-height:1.38;">Paid amplification, guest names, repurpose to YouTube &amp; email.</div>
+      </div>
+    </div>
+    <div style="flex:1; display:flex; gap:24px; margin-top:24px;">
+      <div style="flex:1; background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:34px 38px; display:flex; flex-direction:column; justify-content:center;">
+        <div style="font-family:'Space Mono',monospace; font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:24px;">Indicative budget split · redacted</div>
+        <div style="display:flex; height:46px; border-radius:5px; overflow:hidden; margin-bottom:18px;"><div style="width:55%; background:var(--red);"></div><div style="width:28%; background:var(--amber);"></div><div style="width:17%; background:var(--muted);"></div></div>
+        <div style="display:flex; gap:30px; font-size:20px; color:#cdc6ba;"><span style="display:flex; align-items:center; gap:10px;"><span style="width:14px;height:14px;background:var(--red);border-radius:2px;"></span>Production <span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></span><span style="display:flex; align-items:center; gap:10px;"><span style="width:14px;height:14px;background:var(--amber);border-radius:2px;"></span>Paid amplification <span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></span><span style="display:flex; align-items:center; gap:10px;"><span style="width:14px;height:14px;background:var(--muted);border-radius:2px;"></span>Talent &amp; misc <span style="display:inline-block; width:1.7em; height:0.7em; background:var(--dim); border-radius:0.1em; vertical-align:-0.04em; opacity:.72;"></span></span></div>
+      </div>
+      <div style="flex:none; width:660px; background:var(--red); color:#1a0c08; border-radius:6px; padding:34px 42px; display:flex; flex-direction:column; justify-content:center;">
+        <div style="font-family:'Space Mono',monospace; font-size:18px; letter-spacing:.12em; text-transform:uppercase;">The ask</div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:40px; line-height:1.08; margin-top:14px; text-transform:uppercase;">Green-light a 3-episode pilot</div>
+        <div style="font-size:22px; margin-top:14px; line-height:1.4; color:#3a160d;">Pick a venue and an artist this week — we shoot within the month and report back on the numbers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</deck-stage>
+
+<script src="../js/deck-stage.js"></script>
+</body>
+</html>

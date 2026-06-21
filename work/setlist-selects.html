@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setlist Selects — Christian McLernon</title>
+  <meta name="description" content="A behind-the-scenes social campaign for The Blues Kitchen — short-form vertical content profiling resident artists to turn the untold performer story into a measurable footfall driver." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/project.css" />
+  <style>
+    :root {
+      --accent:        #e8412a;
+      --accent-light:  #f07060;
+      --accent-warm:   #e6a93a;
+      --accent-warm-l: #f2c96a;
+      --bg:            #0e0d0c;
+      --bg-raised:     #17130f;
+      --bg-overlay:    #211b14;
+      --page-insight-bg: #1c1510;
+    }
+
+    /* Dark theme overrides for this page */
+    body { background: var(--bg); }
+
+    .nav {
+      background: rgba(14,13,12,.92);
+      border-bottom-color: rgba(244,240,232,.08);
+    }
+    .nav-logo,
+    .nav-link,
+    .nav-cv { color: #f4f0e8; }
+    .nav-link:hover { color: #e8412a; }
+    .nav-cv {
+      border-color: rgba(244,240,232,.25);
+      color: #f4f0e8;
+    }
+    .nav-cv:hover { background: rgba(244,240,232,.08); }
+    .nav-menu-btn span { background: #f4f0e8; }
+
+    .mobile-menu { background: #17130f; }
+    .mobile-nav-link { color: #f4f0e8; }
+
+    .proj-hero {
+      background:
+        radial-gradient(ellipse at 80% 0%, rgba(232,65,42,.14) 0%, transparent 55%),
+        radial-gradient(ellipse at 0% 100%, rgba(230,169,58,.06) 0%, transparent 50%),
+        #0e0d0c;
+      color: #f4f0e8;
+    }
+
+    .proj-breadcrumb { color: #9a8f82; }
+    .proj-breadcrumb:hover { color: #f4f0e8; }
+    .proj-num { color: #6b6256; }
+    .proj-client-line { color: #9a8f82; }
+    .proj-title { color: #f4f0e8; }
+    .proj-hero-tags .tag {
+      background: rgba(244,240,232,.07);
+      color: #9a8f82;
+      border: 1px solid rgba(244,240,232,.1);
+    }
+
+    .proj-insight {
+      background: #17130f;
+      border-top: 1px solid rgba(244,240,232,.08);
+      border-bottom: 1px solid rgba(244,240,232,.08);
+    }
+    .proj-quote { color: #f4f0e8; }
+    .proj-quote-attr { color: #9a8f82; }
+
+    .proj-kpis {
+      border-top: 1px solid rgba(244,240,232,.08);
+      border-bottom: 1px solid rgba(244,240,232,.08);
+    }
+    .proj-kpi-value { color: #e8412a; }
+    .proj-kpi-label { color: #9a8f82; }
+    .proj-kpi { border-right-color: rgba(244,240,232,.08); }
+
+    .proj-body { background: #0e0d0c; }
+    .proj-section-label { color: #6b6256; border-left-color: #e8412a; }
+    .proj-heading { color: #f4f0e8; }
+    .proj-text { color: #cdc6ba; }
+    .proj-text strong { color: #f4f0e8; }
+    .proj-exec-grid { border-color: rgba(244,240,232,.08); }
+    .proj-exec-cell { border-right-color: rgba(244,240,232,.08); }
+    .proj-exec-title { color: #f4f0e8; }
+    .proj-exec-items li { color: #9a8f82; }
+    .proj-exec-items li::before { color: #e8412a; }
+
+    /* Storyboard / three-beats visual */
+    .beats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 36px;
+    }
+    .beat-card {
+      background: #17130f;
+      border: 1px solid rgba(244,240,232,.08);
+      border-top: 4px solid #e8412a;
+      border-radius: 8px;
+      padding: 32px 28px;
+    }
+    .beat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 48px;
+      color: #e8412a;
+      line-height: 1;
+    }
+    .beat-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #f4f0e8;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-top: 14px;
+    }
+    .beat-desc {
+      font-size: 15px;
+      color: #9a8f82;
+      margin-top: 10px;
+      line-height: 1.55;
+    }
+
+    /* Waveform decoration */
+    .waveform {
+      display: flex;
+      align-items: flex-end;
+      gap: 5px;
+      height: 40px;
+      margin-bottom: 32px;
+    }
+    .waveform span {
+      display: block;
+      width: 5px;
+      border-radius: 2px;
+      background: #e8412a;
+      opacity: .7;
+    }
+
+    .proj-download {
+      background: #17130f;
+      border: 1px solid rgba(244,240,232,.08);
+    }
+    .proj-download-text { color: #9a8f82; }
+    .proj-download-text em { color: #f4f0e8; }
+
+    .proj-kpi-preface {
+      color: #6b6256;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner container">
+      <a href="../index.html" class="nav-logo">CM</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#work" class="nav-link">Work</a></li>
+        <li><a href="../index.html#about" class="nav-link">About</a></li>
+        <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <a href="../assets/Christian_McLernon_CV_Hybrid.pdf" target="_blank" rel="noopener" class="nav-cv btn btn-ghost btn-sm">Download CV</a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul class="mobile-nav-links">
+      <li><a href="../index.html#work" class="mobile-nav-link">Work</a></li>
+      <li><a href="../index.html#about" class="mobile-nav-link">About</a></li>
+      <li><a href="../index.html#contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero -->
+  <section class="proj-hero">
+    <div class="container">
+      <a href="../index.html#work" class="proj-breadcrumb reveal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        All Work
+      </a>
+      <div class="proj-num reveal">05 &mdash; Social Campaign</div>
+      <div class="proj-client-line reveal">The Blues Kitchen &middot; Internship Campaign Brief &middot; 2026</div>
+      <h1 class="proj-title reveal">Setlist<br />Selects.</h1>
+      <div class="proj-hero-tags reveal">
+        <span class="tag">Social Strategy</span>
+        <span class="tag">Content Campaign</span>
+        <span class="tag">Short-Form Video</span>
+        <span class="tag">Internship Brief</span>
+        <span class="tag">Hospitality &amp; Music</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pull Quote -->
+  <section class="proj-insight">
+    <div class="container">
+      <blockquote class="proj-quote reveal">
+        Seven nights of live music.<br /><em>~Zero content about the artists.</em>
+      </blockquote>
+      <p class="proj-quote-attr reveal">The strategic gap identified during my internship with The Blues Kitchen marketing team</p>
+    </div>
+  </section>
+
+  <!-- KPIs -->
+  <div class="container">
+    <div class="proj-kpis">
+      <div class="proj-kpi reveal">
+        <div class="proj-kpi-value">12</div>
+        <div class="proj-kpi-label">Slides in the campaign pitch, from insight to rollout plan</div>
+      </div>
+      <div class="proj-kpi reveal">
+        <div class="proj-kpi-value">3</div>
+        <div class="proj-kpi-label">Phases: Pilot &rarr; Launch &rarr; Scale, starting with a 3-episode test shoot</div>
+      </div>
+      <div class="proj-kpi reveal">
+        <div class="proj-kpi-value">4</div>
+        <div class="proj-kpi-label">Audience segments mapped across Instagram and TikTok</div>
+      </div>
+      <p class="proj-kpi-preface reveal">Campaign developed as part of my internship with the Columbo Group (Blues Kitchen) marketing team. Specific social analytics figures are redacted for confidentiality.</p>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="proj-body">
+    <div class="container">
+
+      <div class="proj-section reveal">
+        <div class="proj-section-label">The Brief</div>
+        <div class="proj-section-content">
+          <h2 class="proj-heading">Turn the performers into the content.</h2>
+          <p class="proj-text">
+            The Blues Kitchen runs live music seven nights a week across four London venues &mdash; it&rsquo;s the core of
+            the brand. But scanning the feed, the artists who fill those rooms barely featured. The food, the bourbon,
+            the club nights &mdash; all well represented. The musicians? The one thing no competitor could replicate? Quiet.
+          </p>
+          <p class="proj-text">
+            During my internship with the Columbo Group marketing team, I identified this gap and developed
+            <em>Setlist Selects</em> &mdash; a short-form vertical video series profiling resident performers through
+            three consistent story beats, designed to be shot quickly, cross-posted across Reels and TikTok, and
+            measurable all the way to booked covers.
+          </p>
+          <div class="proj-exec-grid">
+            <div class="proj-exec-cell">
+              <div class="proj-exec-title">Format</div>
+              <ul class="proj-exec-items">
+                <li>Vertical 9:16 Reels &amp; TikTok</li>
+                <li>60s hero + 3–4 cut-downs</li>
+                <li>Captions burned in for silent autoplay</li>
+              </ul>
+            </div>
+            <div class="proj-exec-cell">
+              <div class="proj-exec-title">Rollout</div>
+              <ul class="proj-exec-items">
+                <li>Phase 1: 3-episode pilot, 1 venue</li>
+                <li>Phase 2: fortnightly across all 4</li>
+                <li>Phase 3: paid amplification &amp; guest names</li>
+              </ul>
+            </div>
+            <div class="proj-exec-cell">
+              <div class="proj-exec-title">Platforms</div>
+              <ul class="proj-exec-items">
+                <li>Instagram Reels (primary)</li>
+                <li>TikTok (discovery &amp; reach)</li>
+                <li>YouTube &amp; email (Phase 3)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-section reveal">
+        <div class="proj-section-label">The Insight</div>
+        <div class="proj-section-content">
+          <h2 class="proj-heading">Likes are not the win.</h2>
+          <p class="proj-text">
+            The campaign brief came out of a clear data observation: story-led content &mdash; artist interviews,
+            behind-the-scenes moments &mdash; consistently drives the engagement actions that actually matter to the
+            algorithm and to the business. Not likes. <strong>Saves. Shares. Comments.</strong>
+          </p>
+          <p class="proj-text">
+            A like is a reflex. A save is intent to return. A share is free reach to a new audience. And a comment
+            is a conversation. Analysis of content performance by type showed artist stories produced the widest gap
+            between surface likes and deep engagement &mdash; that&rsquo;s where the format lives.
+          </p>
+          <p class="proj-text">
+            The PEST context made the case stronger: squeezed discretionary spend means every night out has to
+            justify itself, and free, emotionally resonant content lowers the consideration barrier. Meanwhile,
+            TikTok&rsquo;s algorithm actively rewards the authentic, human stories that live music venues are
+            uniquely positioned to tell.
+          </p>
+        </div>
+      </div>
+
+      <div class="proj-section reveal">
+        <div class="proj-section-label">The Format</div>
+        <div class="proj-section-content">
+          <h2 class="proj-heading">One artist. One story. Three beats.</h2>
+          <p class="proj-text">
+            Every episode follows the same structure &mdash; instantly recognisable, endlessly repeatable across
+            the full roster of resident performers.
+          </p>
+
+          <div class="waveform" aria-hidden="true">
+            <span style="height:35%;"></span>
+            <span style="height:70%; background:#e8412a;"></span>
+            <span style="height:50%;"></span>
+            <span style="height:90%; background:#e8412a;"></span>
+            <span style="height:40%;"></span>
+            <span style="height:65%; background:#e6a93a;"></span>
+            <span style="height:80%; background:#e8412a;"></span>
+            <span style="height:45%;"></span>
+            <span style="height:55%;"></span>
+            <span style="height:100%; background:#e8412a;"></span>
+            <span style="height:38%;"></span>
+            <span style="height:72%; background:#e6a93a;"></span>
+          </div>
+
+          <div class="beats-grid">
+            <div class="beat-card">
+              <div class="beat-num">01</div>
+              <div class="beat-title">The Roots</div>
+              <p class="beat-desc">Where they&rsquo;re from and how they found this music. The human origin story that audiences connect with before a single note plays.</p>
+            </div>
+            <div class="beat-card">
+              <div class="beat-num">02</div>
+              <div class="beat-title">The Record</div>
+              <p class="beat-desc">The one track that changed everything for them &mdash; played, hummed, or spun on the night. A shareable, specific, personal moment.</p>
+            </div>
+            <div class="beat-card">
+              <div class="beat-num">03</div>
+              <div class="beat-title">The Ritual</div>
+              <p class="beat-desc">What they do in the green room before they walk on stage. The intimate, unseen moment that makes a viewer feel like an insider.</p>
+            </div>
+          </div>
+
+          <p class="proj-text" style="margin-top:32px;">
+            The episode structure opens cold &mdash; a scroll-stopping hook line, no intro &mdash; then credits the
+            artist with a red lower-third, carries through Roots &rarr; Record &rarr; Ritual tightly to camera,
+            cuts to a live performance moment with real venue sound, and closes to a CTA driving to the next gig.
+            One weekend shoot yields a 60-second hero Reel plus three or four shorter cut-downs, all cross-posted
+            to IG and TikTok.
+          </p>
+        </div>
+      </div>
+
+      <div class="proj-section reveal">
+        <div class="proj-section-label">The Growth Case</div>
+        <div class="proj-section-content">
+          <h2 class="proj-heading">From scroll to seat.</h2>
+          <p class="proj-text">
+            The pitch positioned every episode as an <strong>acquisition asset</strong>, not a brand post. The
+            funnel runs from vertical reach into profile visits, profile visits into follows, follows into the
+            email and ticketing list, and that list into measurable footfall and booked covers.
+          </p>
+          <p class="proj-text">
+            Specific target figures are set against three KPIs: six-month follower lift, saves-plus-shares per
+            1k views (the campaign&rsquo;s north-star metric over likes), and attributable bookings per month. These
+            were presented to the marketing team with placeholder values to be validated against real CRM and
+            ticketing data before the pilot launched.
+          </p>
+          <p class="proj-text">
+            The competitive positioning argument was simple: Blues Kitchen already owns a rare spot &mdash; credibly
+            music-led but warm and accessible. No competitor in the London live-music landscape was telling
+            the artist stories behind their rooms. <em>That lane was empty.</em>
+          </p>
+        </div>
+      </div>
+
+      <!-- Deck CTA -->
+      <div class="proj-download reveal">
+        <p class="proj-download-text">View the full<br /><em>12-slide campaign deck.</em></p>
+        <a href="setlist-selects-deck.html" class="btn btn-ghost">
+          View slide deck
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
